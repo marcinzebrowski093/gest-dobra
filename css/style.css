@@ -1093,6 +1093,368 @@ main:focus {
   color: var(--c-muted);
 }
 
+/* ==========================================================================
+   Podstrona „Jak działa Gest Dobra?”
+   ========================================================================== */
+
+/* okruszki */
+.crumbs {
+  margin-bottom: 18px;
+  font-size: 0.9375rem;
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 0;
+  padding: 0 0 0 4px;
+  list-style: none;
+}
+
+.crumbs li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--c-muted);
+}
+
+.crumbs li + li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.8;
+}
+
+.crumbs a {
+  font-weight: 600;
+  color: var(--c-green-dark);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.crumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* hero podstrony */
+.hero--sub {
+  padding-top: 118px;
+}
+
+.hero__card--sub {
+  padding-block: 44px 48px;
+}
+
+.hero__title--sub {
+  max-width: 12em;
+  font-size: var(--fs-h1);
+  text-wrap: balance;
+}
+
+.brand {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.04em;
+  white-space: nowrap;
+}
+
+/* duża karta-panel (jak karta hero) */
+.panel {
+  position: relative;
+  padding: 48px 56px 52px;
+  border: var(--border-soft);
+  border-radius: var(--radius-hero);
+  background: var(--c-cream);
+  box-shadow: var(--shadow-card);
+}
+
+.panel__title {
+  margin-bottom: 22px;
+}
+
+.panel__body p,
+.karta__text p {
+  max-width: 62rem;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.panel__body p + p,
+.karta__text p + p {
+  margin-top: 16px;
+}
+
+.quote--strong p {
+  font-weight: 600;
+  color: var(--c-green-dark);
+}
+
+.panel__media {
+  margin-top: 36px;
+}
+
+.panel__media picture,
+.banner picture,
+.journey__media picture {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.panel__media img,
+.banner img,
+.journey__media img {
+  width: 100%;
+}
+
+.section--why {
+  padding-top: 40px;
+}
+
+/* --- W jaki sposób dobro może żyć dłużej? – 5 kroków --- */
+.life-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  margin: 48px 0 0;
+  padding: 0;
+}
+
+.life-step {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 18px 18px;
+  border: var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #fffefd 0%, #fffaf0 100%);
+  box-shadow: var(--shadow-card);
+  transition: translate 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .life-step:hover {
+    translate: 0 -5px;
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+.life-step__num {
+  font-family: var(--font-serif);
+  font-size: var(--fs-num);
+  line-height: 1;
+  color: var(--c-green);
+}
+
+.life-step__title {
+  margin-top: 12px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--c-green-dark);
+}
+
+.life-step__icon {
+  display: grid;
+  place-items: center;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.life-step__icon picture {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  background: var(--c-white);
+}
+
+.life-step__icon img {
+  width: 62%;
+  max-width: 120px;
+  transition: transform 0.6s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .life-step:hover .life-step__icon img {
+    transform: scale(1.08);
+  }
+}
+
+.banner {
+  margin-top: 36px;
+}
+
+.banner img {
+  aspect-ratio: 2.6 / 1;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+/* --- Dlaczego Gest Dobra nie wymaga rewanżu? --- */
+.card--norev {
+  margin-top: 48px;
+}
+
+.card--norev .card__title {
+  font-size: 1.375rem;
+}
+
+.card--norev p + p {
+  margin-top: 12px;
+}
+
+/* --- Dlaczego karta jest ważna? (projekt autorski) --- */
+.panel--card {
+  margin-top: 48px;
+}
+
+.karta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+/* dwie karty ułożone jak w dłoni – po najechaniu rozsuwają się */
+.karta__stage {
+  margin: 0;
+  text-align: center;
+}
+
+.karta__cards {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 360 / 400;
+  margin-inline: auto;
+}
+
+/* ciepła poświata za kartami – nawiązanie do świetlistych ilustracji */
+.karta__cards::before {
+  content: "";
+  position: absolute;
+  inset: -4% -8% 0;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 214, 120, 0.55), rgba(255, 228, 170, 0.25) 55%, rgba(255, 250, 240, 0) 100%);
+}
+
+.karta__card {
+  position: absolute;
+  top: 6%;
+  width: 54%;
+  height: auto;
+  border-radius: 14px;
+  filter: drop-shadow(0 14px 22px rgba(56, 38, 24, 0.2)) drop-shadow(0 2px 4px rgba(56, 38, 24, 0.12));
+  transition: transform 0.8s var(--ease-out);
+}
+
+.karta__card--front {
+  left: 6%;
+  z-index: 2;
+  transform: rotate(-7deg);
+}
+
+.karta__card--back {
+  right: 4%;
+  top: 12%;
+  z-index: 1;
+  transform: rotate(8deg);
+}
+
+@media (hover: hover) {
+  .karta__stage:hover .karta__card--front {
+    transform: translate(-8%, -3%) rotate(-11deg);
+  }
+
+  .karta__stage:hover .karta__card--back {
+    transform: translate(8%, -1%) rotate(12deg);
+  }
+}
+
+.karta__caption {
+  margin-top: 8px;
+  font-size: var(--fs-small);
+  color: var(--c-muted);
+}
+
+.quote--card {
+  margin-top: 36px;
+}
+
+.quote--card p strong {
+  font-weight: 600;
+  color: var(--c-green-dark);
+}
+
+/* droga od wsparcia do samodzielności: panorama + podpisy pod każdą sceną */
+.journey {
+  margin: 40px 0 0;
+}
+
+.journey__steps {
+  display: grid;
+  grid-template-columns: 0.34fr 0.3fr 0.36fr;
+  gap: 18px;
+  margin: 14px 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.journey__step {
+  display: grid;
+  gap: 4px;
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--c-muted);
+}
+
+.journey__step strong {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-green-dark);
+}
+
+/* --- Co naprawdę przekazujemy drugiemu człowiekowi? --- */
+.give-card__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 1.3rem + 0.8vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--c-green);
+}
+
+.give-card__list {
+  margin: 18px 0 0;
+}
+
+.give-card__list dt {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--c-green-dark);
+}
+
+.give-card__list dd {
+  margin: 6px 0 0;
+}
+
+.give-card__list dd + dt {
+  margin-top: 18px;
+}
+
+/* --- Najczęstsze pytania – siatka kart --- */
+.faq-card p {
+  margin-top: 10px;
+}
+
 /* ---------- Strona 404 ---------- */
 .page-404 {
   background-image: linear-gradient(180deg, #f2e8de 0%, #fffaf0 55%, #f2e8de 100%);
@@ -1300,6 +1662,20 @@ main:focus {
 .js .leaf--left [data-reveal="leaf"]:not(.is-visible) {
   opacity: 0;
   transform: rotate(28deg) scale(0.55);
+}
+
+/* karty Gestu Dobra „rozkładają się” z jednej kupki */
+.js [data-reveal="cards"] .karta__card {
+  transition: transform 1.1s var(--ease-out) 0.15s, opacity 0.8s var(--ease-out) 0.15s;
+}
+
+.js [data-reveal="cards"]:not(.is-visible) .karta__card {
+  opacity: 0;
+  transform: translate(0, 18%) rotate(0deg);
+}
+
+.js [data-reveal="cards"]:not(.is-visible) .karta__card--back {
+  transform: translate(-30%, 22%) rotate(0deg);
 }
 
 /* separator: linie rosną od serca, serce się „rysuje” (maska) i bije */
@@ -1533,6 +1909,26 @@ main:focus {
     top: 34px;
     right: clamp(24px, 4vw, 48px);
   }
+
+  .hero--sub {
+    padding-top: 96px;
+  }
+
+  .life-steps {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .life-step {
+    grid-column: span 2;
+  }
+
+  .life-step:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .panel {
+    padding: 40px clamp(28px, 4.5vw, 48px) 44px;
+  }
 }
 
 /* --- tablet pionowo / duże telefony: jedna kolumna --- */
@@ -1677,6 +2073,79 @@ main:focus {
 
   .site-footer {
     padding: 24px 0;
+  }
+
+  /* podstrona */
+  .hero__title--sub {
+    margin-inline: auto;
+  }
+
+  .panel {
+    padding: 30px 22px 32px;
+    border-radius: var(--radius-hero);
+  }
+
+  .panel__media,
+  .banner {
+    margin-top: 26px;
+  }
+
+  .banner img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .life-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .life-step,
+  .life-step:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .life-step:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .life-step:last-child .life-step__icon picture {
+    aspect-ratio: auto;
+    padding: 14px 0;
+  }
+
+  .life-step:last-child .life-step__icon img {
+    width: 96px;
+  }
+
+  .karta {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .karta__cards {
+    width: min(100%, 300px);
+  }
+
+  .quote--card {
+    margin-top: 28px;
+  }
+
+  .journey__steps {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .journey__step {
+    padding-left: 16px;
+    border-left: 3px solid #e4dccd;
+  }
+
+  .card--norev,
+  .panel--card {
+    margin-top: 36px;
   }
 }
 

@@ -60,9 +60,15 @@ pyftsubset Inter.ttf --unicodes="U+0020-007E,U+00A0-00FF,U+0104-0107,U+0118-0119
 
 ## Wersje językowe
 
-Strona ma wersje PL (`/`), EN (`/en/`), EL (`/el/`) i RU (`/ru/`).
+Serwis ma dwie strony w czterech językach:
 
-- Źródłem jest `index.html` (PL) i tłumaczenia w `i18n/{pl,en,el,ru}.json`.
+| Strona | PL | EN | EL | RU |
+|---|---|---|---|---|
+| Główna | `/` | `/en/` | `/el/` | `/ru/` |
+| Jak działa Gest Dobra? | `/chce-zrozumiec-wiecej.html` | `/en/how-it-works.html` | `/el/pos-leitourgei.html` | `/ru/kak-eto-rabotaet.html` |
+
+- Źródłem są polskie strony (`index.html`, `chce-zrozumiec-wiecej.html`) i tłumaczenia w `i18n/{pl,en,el,ru}.json` (klucze podstrony zaczynają się od `sub.`).
+- Linki między stronami zapisuj jako `./chce-zrozumiec-wiecej.html#kotwica`, a generator sam podmieni nazwę pliku w każdym języku.
 - Pliki `en/`, `el/` i `ru/index.html` są **generowane**, więc nie edytuj ich ręcznie.
 - Po każdej zmianie treści lub układu w `index.html` albo w tłumaczeniach uruchom:
 

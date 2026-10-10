@@ -62,6 +62,16 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
   - cudzysłowy „…”,
   - półpauzy (–).
 
+### Etap 4a – Podstrona „Jak działa Gest Dobra?” (wersja 1.3)
+- Adres jak na obecnej stronie: `/chce-zrozumiec-wiecej.html` oraz `/en/how-it-works.html`, `/el/pos-leitourgei.html` i `/ru/kak-eto-rabotaet.html`, więc dotychczasowe linki działają dalej.
+- Układ według projektu z Figmy, w tej samej skali i z tymi samymi komponentami co strona główna: okruszki, karta hero z ilustracją, panele, 5 kafelków „jak dobro żyje dłużej”, karty przykładów i pytań, „Najprostsza myśl”.
+- **Sekcja „Dlaczego karta jest ważna?” (projekt autorski):**
+  - tekst obok wachlarza dwóch kart (przód i tył) z ciepłą poświatą; po najechaniu karty się rozsuwają, a przy wejściu „rozkładają się” z jednej kupki,
+  - pod spodem cytat i panorama trzech scen (wsparcie → nauka równowagi → samodzielność); tabliczkę usunąłem,
+  - polskie napisy wtopione w grafikę zastąpiłem tekstem HTML pod każdą sceną. Dzięki temu są przetłumaczone na każdy język i dostępne dla czytników ekranu.
+- Wszystkie grafiki z obecnej strony pobrane, zoptymalizowane do AVIF/WebP (1× i 2×), a ich oryginały zapisane w `_design/source-assets/jak-dziala/`.
+- Menu „Karta” i „Pytania” oraz przyciski „Zobacz, jak działa Gest Dobra” na stronie głównej prowadzą do tej podstrony.
+
 ### Etap 5 – Style i responsywność
 - Design tokens w `:root` (kolory, fonty, promienie, cienie, krzywe animacji).
 - Od wersji 1.1 rozmiary tekstu są w `rem` (respektują ustawienia czcionki w przeglądarce) i skalują się płynnie przez `clamp()`. Typografia jest zmniejszona względem Figmy do standardowych rozmiarów webowych: tekst 17–20 px, nagłówki do 52 px, menu 17 px, przyciski 56 px wysokości (wcześniej 75 px).
@@ -200,9 +210,9 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 
 ## 4. Do zrobienia przed publikacją
 - [ ] **Domena**: zamienić `https://example.com/` na docelowy adres (prawdopodobnie `https://gestdobra.pl/`, gdzie działa obecna strona) w `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml` i `robots.txt`.
-- [ ] **Sekcje „Karta” i „Pytania”**: czekają na projekt graficzny. Na obecnej stronie obie treści są na podstronie `/chce-zrozumiec-wiecej.html` (`#dlaczego-karta-jest-wazna`, `#faq`). Wstępna wersja sekcji pytań (akordeon + dane strukturalne FAQPage) jest odłożona w `git stash` i można ją szybko przywrócić.
-- [ ] **Podstrona obecnej strony** `/chce-zrozumiec-wiecej.html` (także w wersjach `/en/`, `/el/`, `/ru/`): przy wdrożeniu trzeba zdecydować, czy zostaje w starym wyglądzie (wtedy CSP w `.htaccess` musi dopuścić jej zasoby, np. Google Fonts), czy dostaje nowy projekt razem z sekcjami „Karta” i „Pytania”.
-- [ ] **Tłumaczenia sekcji „Karta” i „Pytania”**: gdy powstaną, trzeba je dodać do plików `i18n/*.json`.
+- [ ] **Teksty tłumaczeń do przejrzenia przez native speakerów** (EL, RU): podpisy trzech scen w sekcji o karcie, opisy kart i kilka etykiet interfejsu to nowe tłumaczenia. Reszta pochodzi z obecnej strony.
+- [ ] **Karta w wersjach EN/EL/RU**: zdjęcia karty pokazują fizyczną, polską kartę (napisy po polsku). Jeśli powstaną karty w innych językach, wystarczy podmienić pliki `assets/img/jak-dziala/karta-*.webp`.
+- [ ] **Grafika „dobro z obowiązkiem / dobro z wolnością”** ma polskie napisy wpisane w obraz (tak jak na obecnej stronie). Dla pełnej lokalizacji potrzebna byłaby wersja bez napisów.
 - [ ] Po uruchomieniu HTTPS: odkomentować HSTS w `.htaccess`.
 - [ ] Dodać stronę do **Google Search Console** i wysłać `sitemap.xml`.
 - [ ] Jeśli pojawi się analityka (np. GA4) lub osadzenia (YouTube, mapy): potrzebny baner zgód + polityka prywatności. Trzeba też dopisać domeny do CSP.
@@ -216,7 +226,8 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 ```
 gest dobra/
 ├── index.html              strona główna (PL) – źródło dla wszystkich wersji językowych
-├── en/ el/ ru/             wersje językowe – generowane, nie edytować ręcznie
+├── chce-zrozumiec-wiecej.html  podstrona „Jak działa Gest Dobra?” (PL) – źródło wersji językowych
+├── en/ el/ ru/             wersje językowe (strona główna + podstrona: how-it-works, pos-leitourgei, kak-eto-rabotaet) – generowane
 ├── i18n/                   tłumaczenia (pl, en, el, ru) w JSON
 ├── tools/build-i18n.mjs    generator wersji językowych, hreflang i sitemap.xml
 ├── 404.html                strona błędu
@@ -245,6 +256,7 @@ gest dobra/
 | 1.1.1 | 10.10.2026 | Wszystkie unoszące się serca (hero i ikony) poruszają się w tej samej fazie – wspólny rytm w CSS + wyrównanie startu animacji w JS |
 | 1.1.2 | 10.10.2026 | Większe logo (desktop 200 px, tablet 170 px, telefon 144 px); poprawiony nagłówek na najmniejszych telefonach (320–374 px – wcześniej hamburger wychodził poza ekran przy 320 px) |
 | 1.2.0 | 10.10.2026 | Wersje językowe EN, EL (grecki) i RU z oficjalnymi tłumaczeniami (adresy jak na obecnej stronie); przełącznik języka z flagami (siatka 2×2); hreflang i sitemap z alternatywami; obrazki OG w każdym języku; fonty dla greki i cyrylicy ładowane tylko na tych wersjach |
+| 1.3.0 | 10.10.2026 | Podstrona „Jak działa Gest Dobra?” w 4 językach (adresy jak na obecnej stronie): okruszki, sekcje „Dlaczego powstał”, „W jaki sposób dobro może żyć dłużej” (5 kroków), „Dlaczego karta jest ważna” (autorski układ: wachlarz kart z poświatą, panorama trzech scen z podpisami w HTML zamiast tabliczki i napisów w obrazie), „Co naprawdę przekazujemy”, pytania i „Najprostsza myśl”; dane strukturalne BreadcrumbList + FAQPage; menu „Karta” i „Pytania” oraz przyciski „Zobacz, jak działa” prowadzą do podstrony; generator obsługuje wiele stron |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

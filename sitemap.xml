@@ -37,4 +37,40 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/"/>
   </url>
+  <url>
+    <loc>https://example.com/chce-zrozumiec-wiecej.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/en/how-it-works.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/el/pos-leitourgei.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+  </url>
+  <url>
+    <loc>https://example.com/ru/kak-eto-rabotaet.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+  </url>
 </urlset>
