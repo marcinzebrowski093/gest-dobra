@@ -236,5 +236,6 @@ gest dobra/
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
-- Publikacja na GitHub Pages i wersja 1.1 (skala, responsywność, SVG, nowe zdjęcia): 16:10–16:50, **ok. 40 minut**.
-- Łącznie **ok. 1,5 godziny**.
+- Publikacja na GitHub Pages i wersja 1.1 (skala, responsywność, SVG, nowe zdjęcia): 16:10–16:46, **ok. 36 minut**.
+- Audyt obecnej strony, PDF dla klienta, synchronizacja serc (1.1.1): 16:46–16:58.
+- Łącznie (15:21–16:58) **ok. 1 h 40 min**.
