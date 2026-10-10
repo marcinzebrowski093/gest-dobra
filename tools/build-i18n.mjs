@@ -243,8 +243,9 @@ for (const page of PAGES) {
     html = replaceBlock(html, 'jsonld', jsonldBlock(page, lang, html));
     html = replaceBlock(html, 'lang', langBlock(page, lang));
     html = html.replace(/<html lang="[^"]*"/, `<html lang="${lang.html}"`);
-    // w EL/RU nagłówki szeryfowe są w innym alfabecie – preload łacińskiego Bodoni tylko spowalniałby pierwszy ekran
-    if (lang.fonts) html = html.replace(/\n\s*<link rel="preload" href="assets\/fonts\/bodoni-moda-var-pl\.woff2"[^>]*>/, '');
+    // w EL/RU nagłówki są w innym alfabecie – preload łacińskiej Brygady tylko spowalniałby pierwszy ekran
+    // to samo dla łacińskiego Intera – na tych stronach łacina to tylko pojedyncze słowa (np. „Gest Dobra”)
+    if (lang.fonts) html = html.replace(/\n\s*<link rel="preload" href="assets\/fonts\/(brygada-1918-var-pl|inter-var-pl)\.woff2"[^>]*>/g, '');
     html = stripMarkers(html);
     html = relinkPages(html, lang);
     html = prefixPaths(html, '../'.repeat(file.split('/').length - 1));

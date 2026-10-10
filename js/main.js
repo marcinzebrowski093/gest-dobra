@@ -251,57 +251,6 @@
     window.requestAnimationFrame(syncHearts);
   });
 
-  /* ---------- TYMCZASOWE: podgląd krojów nagłówków (?font=…) – do usunięcia po wyborze ---------- */
-  (function fontPreview() {
-    var FONTS = [
-      ['bodoni', 'Bodoni Moda (obecny)'], ['brygada', 'Brygada 1918'], ['fraunces', 'Fraunces'],
-      ['cormorant', 'Cormorant Garamond'], ['lora', 'Lora'], ['alegreya', 'Alegreya'],
-    ];
-    var font = null;
-    try { font = new URLSearchParams(window.location.search).get('font'); } catch (e) {}
-    try {
-      if (font === 'off') { window.sessionStorage.removeItem('gd-font'); return; }
-      if (font) window.sessionStorage.setItem('gd-font', font);
-      else font = window.sessionStorage.getItem('gd-font');
-    } catch (e) {}
-    if (!FONTS.some(function (f) { return f[0] === font; })) return;
-
-    var script = document.querySelector('script[src*="js/main.js"]');
-    var base = script ? script.getAttribute('src').replace(/js\/main\.js.*$/, '') : '';
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = base + 'css/font-preview.css?v=1';
-    document.head.appendChild(link);
-    root.setAttribute('data-font', font);
-
-    var panel = document.createElement('nav');
-    panel.className = 'font-switcher';
-    panel.setAttribute('aria-label', 'Podgląd krojów nagłówków');
-    var title = document.createElement('p');
-    title.className = 'font-switcher__title';
-    title.textContent = 'Krój nagłówków – podgląd';
-    var list = document.createElement('div');
-    list.className = 'font-switcher__list';
-    FONTS.forEach(function (f) {
-      var a = document.createElement('a');
-      a.className = 'font-switcher__btn';
-      a.href = '?font=' + f[0];
-      a.textContent = f[1];
-      if (f[0] === font) a.setAttribute('aria-current', 'true');
-      list.appendChild(a);
-    });
-    var off = document.createElement('a');
-    off.className = 'font-switcher__off';
-    off.href = '?font=off';
-    off.textContent = 'Zakończ podgląd';
-    list.appendChild(off);
-    panel.appendChild(title);
-    panel.appendChild(list);
-    document.body.appendChild(panel);
-    var current = list.querySelector('[aria-current]');
-    if (current) list.scrollLeft = current.offsetLeft - 12;
-  })();
-
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();

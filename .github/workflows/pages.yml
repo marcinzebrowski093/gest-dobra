@@ -29,7 +29,7 @@ jobs:
       - name: Przygotuj wersję podglądową
         run: |
           mkdir _site
-          cp -R index.html chce-zrozumiec-wiecej.html porownanie-fontow.html 404.html en el ru css js assets favicon.ico icon.svg apple-touch-icon.png site.webmanifest _site/
+          cp -R index.html chce-zrozumiec-wiecej.html 404.html en el ru css js assets favicon.ico icon.svg apple-touch-icon.png site.webmanifest _site/
           # podgląd nie może być indeksowany
           printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
           find _site -name '*.html' ! -name '404.html' -exec sed -i -E 's#<meta name="robots" content="[^"]*">#<meta name="robots" content="noindex, nofollow">#' {} +

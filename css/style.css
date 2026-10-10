@@ -5,7 +5,9 @@
    zmniejszony do standardowych rozmiarów webowych (tekst 17–20 px, nagłówki ≤ 52 px).
    ========================================================================== */
 
-/* ---------- Fonty (self-hosted, subsety: łacina + polskie znaki, greka, cyrylica) ---------- */
+/* ---------- Fonty (self-hosted, subsety: łacina + polskie znaki, greka, cyrylica) ----------
+   Treść: Inter. Nagłówki: Brygada 1918 (polski krój, pełna greka i cyrylica).
+   Numeracja 01, 02…: cyfry z Bodoni Moda (plik zawiera wyłącznie cyfry). */
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/inter-var-pl.woff2") format("woff2");
@@ -15,18 +17,6 @@
   unicode-range: U+0000-00FF, U+0104-0107, U+0118-0119, U+0141-0144, U+015A-015B, U+0179-017C, U+2000-206F, U+20AC, U+2122, U+2190-2193;
 }
 
-@font-face {
-  font-family: "Bodoni Moda";
-  src: url("../assets/fonts/bodoni-moda-var-pl.woff2") format("woff2");
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0104-0107, U+0118-0119, U+0141-0144, U+015A-015B, U+0179-017C, U+2000-206F, U+20AC, U+2122, U+2190-2193;
-}
-
-/* Greka i cyrylica (wersje EL/RU) – pobierane tylko, gdy strona zawiera te znaki.
-   Bodoni Moda nie ma tych alfabetów, więc dla nagłówków użyto Noto Serif Display
-   (podobny, kontrastowy krój) pod tą samą nazwą rodziny. */
 @font-face {
   font-family: "Inter";
   src: url("../assets/fonts/inter-var-el.woff2") format("woff2");
@@ -46,21 +36,42 @@
 }
 
 @font-face {
-  font-family: "Bodoni Moda";
-  src: url("../assets/fonts/noto-serif-display-var-el.woff2") format("woff2");
+  font-family: "Brygada 1918";
+  src: url("../assets/fonts/brygada-1918-var-pl.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
+  size-adjust: 106%; /* wyrównanie wielkości optycznej do projektu */
+  unicode-range: U+0000-00FF, U+0104-0107, U+0118-0119, U+0141-0144, U+015A-015B, U+0179-017C, U+2000-206F, U+20AC, U+2122, U+2190-2193;
+}
+
+@font-face {
+  font-family: "Brygada 1918";
+  src: url("../assets/fonts/brygada-1918-var-el.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 106%; /* wyrównanie wielkości optycznej do projektu */
   unicode-range: U+0370-03FF, U+1F00-1FFF;
 }
 
 @font-face {
-  font-family: "Bodoni Moda";
-  src: url("../assets/fonts/noto-serif-display-var-ru.woff2") format("woff2");
+  font-family: "Brygada 1918";
+  src: url("../assets/fonts/brygada-1918-var-ru.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
+  size-adjust: 106%; /* wyrównanie wielkości optycznej do projektu */
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Bodoni Moda Cyfry";
+  src: url("../assets/fonts/bodoni-moda-cyfry.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030-0039;
 }
 
 /* Fonty zastępcze o dopasowanych metrykach – minimalizują przeskok układu (CLS) */
@@ -74,12 +85,12 @@
 }
 
 @font-face {
-  font-family: "Bodoni Fallback";
+  font-family: "Brygada Fallback";
   src: local("Georgia");
-  ascent-override: 115%;
-  descent-override: 41%;
+  ascent-override: 93.2%;
+  descent-override: 25.3%;
   line-gap-override: 0%;
-  size-adjust: 97.5%;
+  size-adjust: 104.7%;
 }
 
 /* kąt odsłonięcia okręgu w ilustracji hero (animowalna zmienna) */
@@ -102,7 +113,9 @@
   --c-white: #fff;
 
   --font-sans: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "Bodoni Moda", "Bodoni Fallback", "Bodoni 72", Didot, Georgia, serif;
+  --font-serif: "Brygada 1918", "Brygada Fallback", Georgia, serif;
+  --font-numerals: "Bodoni Moda Cyfry", var(--font-serif); /* numeracja 01, 02… */
+  --serif-weight: 600;
 
   /* skala typografii */
   --fs-body: 1.0625rem;                                   /* 17 px */
@@ -389,7 +402,8 @@ main:focus {
   transform-origin: left center;
 }
 
-.logo img {
+.logo__img {
+  display: block;
   width: 200px;
   height: auto;
 }
@@ -758,7 +772,7 @@ main:focus {
 .received__title {
   font-family: var(--font-serif);
   font-size: var(--fs-h2-card);
-  font-weight: 700;
+  font-weight: var(--serif-weight);
   line-height: 1.2;
   color: var(--c-green);
 }
@@ -842,7 +856,7 @@ main:focus {
 .section__title {
   font-family: var(--font-serif);
   font-size: var(--fs-h2);
-  font-weight: 700;
+  font-weight: var(--serif-weight);
   line-height: 1.15;
   color: var(--c-green);
   text-wrap: balance;
@@ -956,7 +970,7 @@ main:focus {
 
 .step__num {
   display: block;
-  font-family: var(--font-serif);
+  font-family: var(--font-numerals);
   font-size: var(--fs-num);
   font-weight: 400;
   line-height: 1;
@@ -1023,7 +1037,7 @@ main:focus {
 .cta-card__title {
   font-family: var(--font-serif);
   font-size: var(--fs-h2-card);
-  font-weight: 700;
+  font-weight: var(--serif-weight);
   line-height: 1.2;
   color: var(--c-green);
 }
@@ -1159,7 +1173,7 @@ main:focus {
 
 .brand {
   font-family: var(--font-serif);
-  font-weight: 700;
+  font-weight: var(--serif-weight);
   font-size: 1.04em;
   white-space: nowrap;
 }
@@ -1244,7 +1258,7 @@ main:focus {
 }
 
 .life-step__num {
-  font-family: var(--font-serif);
+  font-family: var(--font-numerals);
   font-size: var(--fs-num);
   line-height: 1;
   color: var(--c-green);
@@ -1426,7 +1440,7 @@ main:focus {
 .give-card__title {
   font-family: var(--font-serif);
   font-size: clamp(1.625rem, 1.3rem + 0.8vw, 2rem);
-  font-weight: 700;
+  font-weight: var(--serif-weight);
   line-height: 1.15;
   color: var(--c-green);
 }
@@ -1496,23 +1510,25 @@ main:focus {
 [data-delay=".55"] { --d: 0.55s; }
 [data-delay=".6"] { --d: 0.6s; }
 
+/* animacje wejścia startują od opacity 0.01, nie 0: wizualnie to samo, ale przeglądarka od pierwszej
+   klatki traktuje treść jako wyświetloną (LCP nie czeka na koniec animacji) */
 @keyframes rise-in {
   from {
-    opacity: 0;
+    opacity: 0.01;
     transform: translate3d(0, 50px, 0) scale(0.985);
   }
 }
 
 @keyframes fade-up {
   from {
-    opacity: 0;
+    opacity: 0.01;
     transform: translate3d(0, 28px, 0);
   }
 }
 
 @keyframes fade-left {
   from {
-    opacity: 0;
+    opacity: 0.01;
     transform: translate3d(-40px, 0, 0);
   }
 }
@@ -1801,8 +1817,8 @@ main:focus {
     margin-left: 18px;
   }
 
-  .logo img,
-  .is-scrolled .logo img {
+  .logo__img,
+  .is-scrolled .logo__img {
     width: 170px;
   }
 
@@ -2160,8 +2176,8 @@ main:focus {
     margin-left: 12px;
   }
 
-  .logo img,
-  .is-scrolled .logo img {
+  .logo__img,
+  .is-scrolled .logo__img {
     width: 144px;
   }
 
@@ -2214,8 +2230,8 @@ main:focus {
     margin-left: 6px;
   }
 
-  .logo img,
-  .is-scrolled .logo img {
+  .logo__img,
+  .is-scrolled .logo__img {
     width: 124px;
   }
 }

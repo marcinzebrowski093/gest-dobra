@@ -51,7 +51,11 @@ Przy `prefers-reduced-motion` wszystkie animacje są wyłączane automatycznie.
 
 **Skala.** Rozmiary tekstu to tokeny `--fs-*` w `:root` (w `rem`, płynnie przez `clamp()`). Zmiana jednego tokenu zmienia dany rozmiar w całym serwisie.
 
-**Fonty.** `assets/fonts/*-var-pl.woff2` to subsety (łacina + polskie znaki) fontów zmiennych Inter (300–700) i Bodoni Moda (400–700, opsz 18). Gdyby zabrakło jakiegoś znaku, wygeneruj subset ponownie z pełnych plików Google Fonts:
+**Fonty.**
+- Treść: Inter (300–700). Nagłówki: Brygada 1918 (400–700). Numeracja 01, 02…: Bodoni Moda (`bodoni-moda-cyfry.woff2` zawiera wyłącznie cyfry 0–9, token `--font-numerals`).
+- Każdy krój ma osobne pliki dla łaciny z polskimi znakami (`*-pl`), greki (`*-el`) i cyrylicy (`*-ru`). Przeglądarka pobiera je przez `unicode-range` tylko wtedy, gdy na stronie są takie znaki.
+- Grubość nagłówków ustawia token `--serif-weight` (600).
+- Gdyby zabrakło jakiegoś znaku, wygeneruj subset ponownie z pełnych plików Google Fonts:
 
 ```bash
 pip install fonttools brotli

@@ -10,7 +10,7 @@ Strona typu one-page wykonana na podstawie projektu z Figmy (desktop 1440 px), w
 |---|---|
 | Lighthouse – mobile (emulacja 4G) | **Performance 100 · Accessibility 100 · Best Practices 100 · SEO 100** |
 | Lighthouse – desktop | **100 · 100 · 100 · 100** |
-| Core Web Vitals (mobile) | LCP 1,5 s · CLS 0 · TBT 0 ms |
+| Core Web Vitals (mobile) | LCP 1,1–1,4 s · CLS 0 · TBT 0 ms (wszystkie 8 stron) |
 | Core Web Vitals (desktop) | LCP 0,4 s · CLS 0 · TBT 0 ms · FCP 0,3 s |
 | axe-core (WCAG 2.0/2.1/2.2 A + AA + best practices) | **0 naruszeń** – desktop, mobile z otwartym menu, dropdown języka, strona 404 |
 | Walidacja HTML (html-validate) | bez błędów |
@@ -35,7 +35,7 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
   - tło `#F2E8DE`.
 - Typografia skalibrowana pomiarem szerokości linii w przeglądarce i porównaniem z projektem:
   - **Inter**: Light 300 dla treści, SemiBold 600 dla tytułów, Bold 700 dla przycisków, bez dodatkowego letter-spacingu.
-  - **Bodoni Moda** w rozmiarze optycznym 18. Tak renderuje go Figma, a przeglądarka domyślnie dałaby bardziej kontrastową wersję.
+  - **Bodoni Moda** w rozmiarze optycznym 18 (od wersji 1.4 nagłówki są w kroju Brygada 1918, a Bodoni został tylko w numeracji 01, 02…, patrz etap 3).
 - Rezultat: szerokości linii tekstu zgodne z projektem z dokładnością 1–3 px, pozycje sekcji z dokładnością 1–3 px.
 
 ### Etap 2 – Porządek i optymalizacja grafik
@@ -50,7 +50,9 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 - Własny subset: łacina + polskie znaki + typograficzne cudzysłowy i myślniki, tylko potrzebne zakresy grubości (fonty zmienne).
 - Z 4 plików / 205 KB zeszło do **2 plików / 55 KB**.
 - `font-display: swap`, preload obu plików i fonty zastępcze o dopasowanych metrykach (`size-adjust`, `ascent-override`). Tekst nie „skacze” po doładowaniu fontu (CLS = 0).
-- Wersje grecka i rosyjska: Inter z greką/cyrylicą oraz **Noto Serif Display** w nagłówkach (Bodoni Moda nie ma tych alfabetów; Noto to podobny, kontrastowy krój szeryfowy). Pliki mają 13–22 KB i ładują się tylko na stronach, które zawierają te znaki (`unicode-range`).
+- **Od wersji 1.4 nagłówki są w kroju Brygada 1918** (wybór klienta spośród 5 propozycji). To polski krój odtworzony na 100-lecie niepodległości z matryc dawnej Państwowej Odlewni Czcionek. Ma pełną grekę i cyrylicę, więc nagłówki wyglądają identycznie we wszystkich 4 językach (wcześniej EL i RU dostawały zastępczy Noto Serif Display). Pliki: 19 KB (łacina), 8 KB (greka), 12 KB (cyrylica).
+- Numeracja 01, 02… zostaje w Bodoni Moda. Plik zawiera wyłącznie cyfry, więc waży 2,7 KB zamiast 22 KB.
+- Fonty greki i cyrylicy ładują się tylko na stronach, które zawierają te znaki (`unicode-range`). Na stronach EL i RU z wyprzedzeniem (preload) pobierany jest tylko font tekstu w danym alfabecie.
 - Licencje OFL dołączone w `assets/fonts/`.
 
 ### Etap 4 – Struktura HTML (semantyka)
@@ -160,6 +162,8 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 - Animacje sterowane IntersectionObserverem zamiast nasłuchu przewijania. Jedyny listener scrolla (stan nagłówka i parallax) jest throttlowany przez `requestAnimationFrame` i pasywny.
 - Kompresja Brotli/Gzip i cache na 1 rok (`immutable`) dla zasobów statycznych, wersjonowanie CSS/JS parametrem `?v=`.
 
+- Animacje wejścia na pierwszym ekranie startują od `opacity: 0.01`, a nie od 0. Wizualnie efekt jest ten sam, ale przeglądarka od pierwszej klatki traktuje treść jako wyświetloną. Dzięki temu Largest Contentful Paint nie czeka na koniec animacji (1,1–1,4 s na telefonie przy emulacji 4G).
+
 ### Etap 10 – Bezpieczeństwo i RODO
 - **Content Security Policy** bez `unsafe-inline`: jedyny skrypt inline dopuszczony hashem SHA-256. Blokuje to większość ataków XSS.
 - Nagłówki:
@@ -238,7 +242,7 @@ gest dobra/
 ├── css/style.css           wszystkie style (z komentarzami)
 ├── js/main.js              interakcje i animacje (bez zależności)
 ├── assets/
-│   ├── fonts/              Inter + Bodoni Moda (łacina) oraz Inter + Noto Serif Display (greka, cyrylica) + licencje OFL
+│   ├── fonts/              Inter (tekst) + Brygada 1918 (nagłówki) w wersjach PL / EL / RU, cyfry Bodoni Moda + licencje OFL
 │   └── img/                grafiki SVG/AVIF/WebP, flagi, ikony, obrazki OG dla każdego języka
 ├── _design/                projekt z Figmy, oryginalne SVG i zdjęcia (nie publikować)
 ├── README.md               instrukcja techniczna
@@ -257,6 +261,7 @@ gest dobra/
 | 1.1.2 | 10.10.2026 | Większe logo (desktop 200 px, tablet 170 px, telefon 144 px); poprawiony nagłówek na najmniejszych telefonach (320–374 px – wcześniej hamburger wychodził poza ekran przy 320 px) |
 | 1.2.0 | 10.10.2026 | Wersje językowe EN, EL (grecki) i RU z oficjalnymi tłumaczeniami (adresy jak na obecnej stronie); przełącznik języka z flagami (siatka 2×2); hreflang i sitemap z alternatywami; obrazki OG w każdym języku; fonty dla greki i cyrylicy ładowane tylko na tych wersjach |
 | 1.3.0 | 10.10.2026 | Podstrona „Jak działa Gest Dobra?” w 4 językach (adresy jak na obecnej stronie): okruszki, sekcje „Dlaczego powstał”, „W jaki sposób dobro może żyć dłużej” (5 kroków), „Dlaczego karta jest ważna” (autorski układ: wachlarz kart z poświatą, panorama trzech scen z podpisami w HTML zamiast tabliczki i napisów w obrazie), „Co naprawdę przekazujemy”, pytania i „Najprostsza myśl”; dane strukturalne BreadcrumbList + FAQPage; menu „Karta” i „Pytania” oraz przyciski „Zobacz, jak działa” prowadzą do podstrony; generator obsługuje wiele stron |
+| 1.4.0 | 10.10.2026 | Nagłówki w kroju Brygada 1918 we wszystkich językach (wybór spośród 5 propozycji pokazanych na stronie porównawczej z podglądem na żywo); numeracja 01, 02… w cyfrach Bodoni Moda (plik 2,7 KB); usunięte fonty zastępcze greki i cyrylicy; animacje wejścia startują od opacity 0.01, więc LCP spadł do 1,1–1,4 s na telefonie |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
