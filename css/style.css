@@ -349,7 +349,7 @@ main:focus {
 }
 
 .logo img {
-  width: 180px;
+  width: 200px;
   height: auto;
 }
 
@@ -1396,7 +1396,7 @@ a.lang__option:hover {
 
   .logo img,
   .is-scrolled .logo img {
-    width: 156px;
+    width: 170px;
   }
 
   .is-scrolled .logo {
@@ -1662,7 +1662,7 @@ a.lang__option:hover {
 
   .logo img,
   .is-scrolled .logo img {
-    width: 132px;
+    width: 144px;
   }
 
   .lang__toggle {
@@ -1682,6 +1682,41 @@ a.lang__option:hover {
 
   .cta-card {
     padding-inline: 18px;
+  }
+}
+
+/* małe telefony (≤ 374 px) – ciaśniejszy nagłówek, żeby wszystko mieściło się w jednym wierszu */
+@media (max-width: 374px) {
+  .site-header__inner {
+    gap: 8px;
+  }
+
+  .nav-pill,
+  .is-scrolled .nav-pill {
+    gap: 8px;
+    padding-right: 6px;
+  }
+
+  .lang__toggle {
+    gap: 6px;
+    padding: 0 10px;
+  }
+
+  .burger {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* najwęższe ekrany (320–339 px, wymóg WCAG „reflow”) */
+@media (max-width: 339px) {
+  .logo {
+    margin-left: 6px;
+  }
+
+  .logo img,
+  .is-scrolled .logo img {
+    width: 124px;
   }
 }
 

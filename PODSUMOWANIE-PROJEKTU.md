@@ -233,6 +233,7 @@ gest dobra/
 | 1.0 | 10.10.2026 | Pierwsza wersja: wdrożenie projektu z Figmy, animacje, dostępność, SEO, bezpieczeństwo, strona 404, podgląd na GitHub Pages |
 | 1.1 | 10.10.2026 | Mniejsza, standardowa skala typografii i elementów (po przeglądzie na MacBooku 16"); rozmiary w `rem` + `clamp()`; dopracowana responsywność na wszystkich progach; grafiki wektorowe SVG z Figmy z animacjami warstw; oficjalne zdjęcia kroków w 1× i 2×; usunięte stare pliki rastrowe |
 | 1.1.1 | 10.10.2026 | Wszystkie unoszące się serca (hero i ikony) poruszają się w tej samej fazie – wspólny rytm w CSS + wyrównanie startu animacji w JS |
+| 1.1.2 | 10.10.2026 | Większe logo (desktop 200 px, tablet 170 px, telefon 144 px); poprawiony nagłówek na najmniejszych telefonach (320–374 px – wcześniej hamburger wychodził poza ekran przy 320 px) |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
