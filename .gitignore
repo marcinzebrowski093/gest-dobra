@@ -1,0 +1,6 @@
+# Oryginały z Figmy – zostają lokalnie, nie trafiają do repo ani na serwer
+_design/
+
+.DS_Store
+node_modules/
+*.log

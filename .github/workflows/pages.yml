@@ -1,0 +1,47 @@
+# Podgląd testowy na GitHub Pages – publikuje się automatycznie po każdym pushu do main.
+# Wersja podglądowa ma noindex + robots „Disallow: /”, żeby nie trafiła do Google
+# (docelowa strona na własnej domenie korzysta z plików bez tych zmian).
+name: Podgląd (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Przygotuj wersję podglądową
+        run: |
+          mkdir _site
+          cp -R index.html 404.html css js assets favicon.ico icon.svg apple-touch-icon.png site.webmanifest _site/
+          # podgląd nie może być indeksowany
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+          sed -i -E 's#<meta name="robots" content="[^"]*">#<meta name="robots" content="noindex, nofollow">#' _site/index.html
+          # GitHub Pages serwuje projekt pod /<repo>/ – ścieżki absolutne w 404.html muszą to uwzględnić
+          REPO="${{ github.event.repository.name }}"
+          sed -i -E "s#(href|src)=\"/#\1=\"/${REPO}/#g" _site/404.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
