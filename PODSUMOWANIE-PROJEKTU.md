@@ -193,7 +193,8 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 
 ## 4. Do zrobienia przed publikacją
 - [ ] **Domena**: zamienić `https://example.com/` na docelowy adres (prawdopodobnie `https://gestdobra.pl/`, gdzie działa obecna strona) w `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml` i `robots.txt`.
-- [ ] **Sekcje „Karta” i „Pytania”**: linki w menu prowadzą do sekcji, których nie ma w projekcie. Potrzebny projekt tych sekcji albo decyzja o usunięciu linków.
+- [ ] **Sekcje „Karta” i „Pytania”**: czekają na projekt graficzny. Na obecnej stronie obie treści są na podstronie `/chce-zrozumiec-wiecej.html` (`#dlaczego-karta-jest-wazna`, `#faq`). Wstępna wersja sekcji pytań (akordeon + dane strukturalne FAQPage) jest odłożona w `git stash` i można ją szybko przywrócić.
+- [ ] **Podstrona i wersje językowe obecnej strony**: `/chce-zrozumiec-wiecej.html` oraz `/en/`, `/el/`, `/ru/` (z `hreflang`). Przy wdrożeniu trzeba zdecydować, czy zostają w starym wyglądzie (wtedy CSP w `.htaccess` musi dopuścić ich zasoby, np. Google Fonts), czy też dostają nowy projekt.
 - [ ] **Wersja angielska**: przełącznik pokazuje „English – wkrótce”. Do decyzji: czy i kiedy powstaje (najlepiej jako osobna strona `/en/` z `hreflang`).
 - [ ] Po uruchomieniu HTTPS: odkomentować HSTS w `.htaccess`.
 - [ ] Dodać stronę do **Google Search Console** i wysłać `sitemap.xml`.
@@ -231,6 +232,7 @@ gest dobra/
 |---|---|---|
 | 1.0 | 10.10.2026 | Pierwsza wersja: wdrożenie projektu z Figmy, animacje, dostępność, SEO, bezpieczeństwo, strona 404, podgląd na GitHub Pages |
 | 1.1 | 10.10.2026 | Mniejsza, standardowa skala typografii i elementów (po przeglądzie na MacBooku 16"); rozmiary w `rem` + `clamp()`; dopracowana responsywność na wszystkich progach; grafiki wektorowe SVG z Figmy z animacjami warstw; oficjalne zdjęcia kroków w 1× i 2×; usunięte stare pliki rastrowe |
+| 1.1.1 | 10.10.2026 | Wszystkie unoszące się serca (hero i ikony) poruszają się w tej samej fazie – wspólny rytm w CSS + wyrównanie startu animacji w JS |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

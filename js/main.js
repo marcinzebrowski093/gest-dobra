@@ -232,6 +232,25 @@
     });
   }
 
+  /* ---------- Serca unoszą się zawsze w tej samej fazie ----------
+     CSS nadaje im ten sam czas i opóźnienie; tu dodatkowo wyrównujemy start
+     wszystkich animacji co do milisekundy (Web Animations API). */
+  function syncHearts() {
+    if (!document.getAnimations) return;
+    var floats = document.getAnimations().filter(function (a) {
+      return a.animationName === 'heart-float' || a.animationName === 'heart-float-sm';
+    });
+    if (floats.length < 2 || floats[0].startTime == null) return;
+    var start = floats[0].startTime;
+    floats.forEach(function (a) {
+      if (a.startTime !== start) a.startTime = start;
+    });
+  }
+
+  window.addEventListener('load', function () {
+    window.requestAnimationFrame(syncHearts);
+  });
+
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();

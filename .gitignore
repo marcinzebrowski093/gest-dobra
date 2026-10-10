@@ -4,3 +4,6 @@ _design/
 .DS_Store
 node_modules/
 *.log
+
+# Dokumenty dla klienta – poza publicznym repo
+*.pdf

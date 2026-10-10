@@ -91,6 +91,10 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.45, 0, 0.2, 1);
 
+  /* wspólny rytm wszystkich unoszących się serc (hero + ikony) – zawsze w tej samej fazie */
+  --heart-float-dur: 4.6s;
+  --heart-float-delay: 2.1s;
+
   --section-pt: 52px;
   --divider-h: 46px;
   --leaf-w: 160px;
@@ -692,12 +696,12 @@ a.lang__option:hover {
   transform-origin: 47% 43%;
   animation:
     heart-drop 1.2s var(--ease-out) 0.85s both,
-    heart-float 4.6s var(--ease-soft) 2.1s infinite;
+    heart-float var(--heart-float-dur) var(--ease-soft) var(--heart-float-delay) infinite;
 }
 
 .art--icon .art__heart {
   transform-origin: 58.5% 31.5%;
-  animation: heart-float-sm 4s var(--ease-soft) infinite;
+  animation: heart-float-sm var(--heart-float-dur) var(--ease-soft) var(--heart-float-delay) infinite;
 }
 
 /* karta „Otrzymałeś Gest Dobra.” */
