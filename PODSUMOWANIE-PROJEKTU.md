@@ -50,6 +50,7 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 - Własny subset: łacina + polskie znaki + typograficzne cudzysłowy i myślniki, tylko potrzebne zakresy grubości (fonty zmienne).
 - Z 4 plików / 205 KB zeszło do **2 plików / 55 KB**.
 - `font-display: swap`, preload obu plików i fonty zastępcze o dopasowanych metrykach (`size-adjust`, `ascent-override`). Tekst nie „skacze” po doładowaniu fontu (CLS = 0).
+- Wersje grecka i rosyjska: Inter z greką/cyrylicą oraz **Noto Serif Display** w nagłówkach (Bodoni Moda nie ma tych alfabetów; Noto to podobny, kontrastowy krój szeryfowy). Pliki mają 13–22 KB i ładują się tylko na stronach, które zawierają te znaki (`unicode-range`).
 - Licencje OFL dołączone w `assets/fonts/`.
 
 ### Etap 4 – Struktura HTML (semantyka)
@@ -132,7 +133,13 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 - `sitemap.xml` i `robots.txt` (z odwołaniem do mapy strony; folder `_design` wykluczony).
 - Przekierowania 301 w `.htaccess`: HTTP → HTTPS, `www` → bez `www`, `/index.html` → `/`.
 - Strona 404 z `noindex` i poprawnym kodem HTTP 404.
-- Przełącznik języka przygotowany pod osobne wersje językowe z `hreflang`. To poprawne podejście SEO, w odróżnieniu od tłumaczenia przez JavaScript.
+- **Wersje językowe PL, EN, EL (grecki), RU** jako osobne, statyczne strony pod tymi samymi adresami co na obecnej stronie (`/`, `/en/`, `/el/`, `/ru/`). Dzięki temu dotychczasowe linki i pozycje w Google zostają. Każda wersja ma:
+  - własne `title`, `description`, `canonical` i `lang`,
+  - komplet znaczników `hreflang` (wraz z `x-default`), także w `sitemap.xml`,
+  - własny obrazek do udostępnień (Open Graph) w danym języku,
+  - przetłumaczone teksty alternatywne i etykiety dla czytników ekranu.
+- Tłumaczenia to oficjalne teksty z obecnej strony gestdobra.pl. Uzupełniłem tylko nowe elementy interfejsu (np. etykiety przycisków).
+- Treść nie jest tłumaczona przez JavaScript, tylko generowana jako gotowy HTML. To najlepsze podejście dla SEO i szybkości.
 - Szybkość i mobile-friendly (100/100) to dziś bezpośrednie czynniki rankingowe Google (Core Web Vitals).
 
 ### Etap 9 – Wydajność (Core Web Vitals)
@@ -194,8 +201,8 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 ## 4. Do zrobienia przed publikacją
 - [ ] **Domena**: zamienić `https://example.com/` na docelowy adres (prawdopodobnie `https://gestdobra.pl/`, gdzie działa obecna strona) w `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml` i `robots.txt`.
 - [ ] **Sekcje „Karta” i „Pytania”**: czekają na projekt graficzny. Na obecnej stronie obie treści są na podstronie `/chce-zrozumiec-wiecej.html` (`#dlaczego-karta-jest-wazna`, `#faq`). Wstępna wersja sekcji pytań (akordeon + dane strukturalne FAQPage) jest odłożona w `git stash` i można ją szybko przywrócić.
-- [ ] **Podstrona i wersje językowe obecnej strony**: `/chce-zrozumiec-wiecej.html` oraz `/en/`, `/el/`, `/ru/` (z `hreflang`). Przy wdrożeniu trzeba zdecydować, czy zostają w starym wyglądzie (wtedy CSP w `.htaccess` musi dopuścić ich zasoby, np. Google Fonts), czy też dostają nowy projekt.
-- [ ] **Wersja angielska**: przełącznik pokazuje „English – wkrótce”. Do decyzji: czy i kiedy powstaje (najlepiej jako osobna strona `/en/` z `hreflang`).
+- [ ] **Podstrona obecnej strony** `/chce-zrozumiec-wiecej.html` (także w wersjach `/en/`, `/el/`, `/ru/`): przy wdrożeniu trzeba zdecydować, czy zostaje w starym wyglądzie (wtedy CSP w `.htaccess` musi dopuścić jej zasoby, np. Google Fonts), czy dostaje nowy projekt razem z sekcjami „Karta” i „Pytania”.
+- [ ] **Tłumaczenia sekcji „Karta” i „Pytania”**: gdy powstaną, trzeba je dodać do plików `i18n/*.json`.
 - [ ] Po uruchomieniu HTTPS: odkomentować HSTS w `.htaccess`.
 - [ ] Dodać stronę do **Google Search Console** i wysłać `sitemap.xml`.
 - [ ] Jeśli pojawi się analityka (np. GA4) lub osadzenia (YouTube, mapy): potrzebny baner zgód + polityka prywatności. Trzeba też dopisać domeny do CSP.
@@ -208,7 +215,10 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 
 ```
 gest dobra/
-├── index.html              strona główna
+├── index.html              strona główna (PL) – źródło dla wszystkich wersji językowych
+├── en/ el/ ru/             wersje językowe – generowane, nie edytować ręcznie
+├── i18n/                   tłumaczenia (pl, en, el, ru) w JSON
+├── tools/build-i18n.mjs    generator wersji językowych, hreflang i sitemap.xml
 ├── 404.html                strona błędu
 ├── .htaccess               HTTPS, cache, kompresja, nagłówki bezpieczeństwa
 ├── robots.txt, sitemap.xml SEO
@@ -217,8 +227,8 @@ gest dobra/
 ├── css/style.css           wszystkie style (z komentarzami)
 ├── js/main.js              interakcje i animacje (bez zależności)
 ├── assets/
-│   ├── fonts/              Inter + Bodoni Moda (subset PL) + licencje OFL
-│   └── img/                grafiki AVIF/WebP, ikony, obrazek OG
+│   ├── fonts/              Inter + Bodoni Moda (łacina) oraz Inter + Noto Serif Display (greka, cyrylica) + licencje OFL
+│   └── img/                grafiki SVG/AVIF/WebP, flagi, ikony, obrazki OG dla każdego języka
 ├── _design/                projekt z Figmy, oryginalne SVG i zdjęcia (nie publikować)
 ├── README.md               instrukcja techniczna
 └── PODSUMOWANIE-PROJEKTU.md
@@ -234,6 +244,7 @@ gest dobra/
 | 1.1 | 10.10.2026 | Mniejsza, standardowa skala typografii i elementów (po przeglądzie na MacBooku 16"); rozmiary w `rem` + `clamp()`; dopracowana responsywność na wszystkich progach; grafiki wektorowe SVG z Figmy z animacjami warstw; oficjalne zdjęcia kroków w 1× i 2×; usunięte stare pliki rastrowe |
 | 1.1.1 | 10.10.2026 | Wszystkie unoszące się serca (hero i ikony) poruszają się w tej samej fazie – wspólny rytm w CSS + wyrównanie startu animacji w JS |
 | 1.1.2 | 10.10.2026 | Większe logo (desktop 200 px, tablet 170 px, telefon 144 px); poprawiony nagłówek na najmniejszych telefonach (320–374 px – wcześniej hamburger wychodził poza ekran przy 320 px) |
+| 1.2.0 | 10.10.2026 | Wersje językowe EN, EL (grecki) i RU z oficjalnymi tłumaczeniami (adresy jak na obecnej stronie); przełącznik języka z flagami (siatka 2×2); hreflang i sitemap z alternatywami; obrazki OG w każdym języku; fonty dla greki i cyrylicy ładowane tylko na tych wersjach |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

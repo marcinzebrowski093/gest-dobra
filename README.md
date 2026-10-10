@@ -20,7 +20,7 @@ Strony nie otwieraj przez `file://`, bo fonty i część funkcji wymagają serwe
 
 ## Edycja
 
-**Cache CSS/JS.** Pliki są cache'owane na rok. Po każdej zmianie `css/style.css` lub `js/main.js` podbij wersję w `index.html` (`?v=1.0.0` → `?v=1.0.1`) i w `404.html`.
+**Cache CSS/JS.** Pliki są cache'owane na rok. Po każdej zmianie `css/style.css` lub `js/main.js` podbij wersję w `index.html` (np. `?v=1.2.0` → `?v=1.2.1`) i w `404.html`, a potem uruchom `node tools/build-i18n.mjs`.
 
 **CSP.** W `<head>` jest jeden mały skrypt inline, dopuszczony w `.htaccess` hashem SHA-256. Jeśli zmienisz jego treść, przelicz hash i podmień go w `.htaccess`:
 
@@ -57,6 +57,24 @@ Przy `prefers-reduced-motion` wszystkie animacje są wyłączane automatycznie.
 pip install fonttools brotli
 pyftsubset Inter.ttf --unicodes="U+0020-007E,U+00A0-00FF,U+0104-0107,U+0118-0119,U+0141-0144,U+015A-015B,U+0179-017C,U+2013-2014,U+2018-201E,U+2022,U+2026" --flavor=woff2 --output-file=inter-var-pl.woff2
 ```
+
+## Wersje językowe
+
+Strona ma wersje PL (`/`), EN (`/en/`), EL (`/el/`) i RU (`/ru/`).
+
+- Źródłem jest `index.html` (PL) i tłumaczenia w `i18n/{pl,en,el,ru}.json`.
+- Pliki `en/`, `el/` i `ru/index.html` są **generowane**, więc nie edytuj ich ręcznie.
+- Po każdej zmianie treści lub układu w `index.html` albo w tłumaczeniach uruchom:
+
+```bash
+node tools/build-i18n.mjs
+```
+
+Skrypt odświeża w `index.html` sekcję `<head>` (title, opisy, canonical, hreflang, Open Graph, JSON-LD) i przełącznik języka. Generuje też wersje językowe i `sitemap.xml`. Przerywa pracę, jeśli brakuje któregoś tłumaczenia.
+
+- **Nowy tekst do przetłumaczenia:** dodaj elementowi `data-i18n="klucz"` (dla atrybutów `data-i18n-attr="alt:klucz"`), a klucz i tłumaczenia do wszystkich plików JSON.
+- **Domena:** ustaw ją w stałej `SITE` na górze `tools/build-i18n.mjs`.
+- **Obrazki OG** (`assets/img/og-image-*.jpg`) są wygenerowane z tekstów hero. Przy zmianie hasła trzeba je odświeżyć.
 
 ## Wsparcie przeglądarek
 Aktualne Chrome, Edge, Firefox, Safari (macOS/iOS 16+), Samsung Internet. Bez JavaScriptu cała treść jest widoczna, tylko bez animacji.

@@ -34,7 +34,7 @@
     if (!burger || !nav) return;
     burger.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
-    if (burgerLabel) burgerLabel.textContent = open ? 'Zamknij menu' : 'Otwórz menu';
+    if (burgerLabel) burgerLabel.textContent = open ? (burger.getAttribute('data-label-close') || 'Zamknij menu') : (burger.getAttribute('data-label-open') || 'Otwórz menu');
   }
 
   if (burger && nav) {
