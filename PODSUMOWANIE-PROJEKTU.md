@@ -10,13 +10,13 @@ Strona typu one-page wykonana na podstawie projektu z Figmy (desktop 1440 px), w
 |---|---|
 | Lighthouse – mobile (emulacja 4G) | **Performance 100 · Accessibility 100 · Best Practices 100 · SEO 100** |
 | Lighthouse – desktop | **100 · 100 · 100 · 100** |
-| Core Web Vitals (mobile) | LCP 1,7 s · CLS 0 · TBT 0 ms · FCP 1,0 s |
+| Core Web Vitals (mobile) | LCP 1,5 s · CLS 0 · TBT 0 ms |
 | Core Web Vitals (desktop) | LCP 0,4 s · CLS 0 · TBT 0 ms · FCP 0,3 s |
 | axe-core (WCAG 2.0/2.1/2.2 A + AA + best practices) | **0 naruszeń** – desktop, mobile z otwartym menu, dropdown języka, strona 404 |
 | Walidacja HTML (html-validate) | bez błędów |
 | Błędy w konsoli przeglądarki / naruszenia CSP | brak |
 | Przewijanie w poziomie (360–1440 px) | brak |
-| Waga strony przy pierwszym wejściu | ok. **145 KB** łącznie (HTML 5 KB, CSS 7 KB, JS 2 KB po kompresji Brotli; fonty 54 KB; grafiki ok. 75 KB) |
+| Waga strony przy pierwszym wejściu | ok. **155 KB** (ekrany Retina: ok. 250 KB, bo ładują się zdjęcia w 2×). HTML z ilustracją SVG 11 KB, CSS 7 KB, JS 2 KB po kompresji Brotli; fonty 54 KB; logo i gałązki SVG 9 KB; zdjęcia kroków 71 KB |
 
 Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z `.htaccess` (kompresja, cache, CSP).
 
@@ -41,9 +41,9 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 ### Etap 2 – Porządek i optymalizacja grafik
 - Pliki uporządkowane: `assets/img`, `assets/fonts`, `css`, `js`. Oryginały z Figmy trafiły do `_design/source-assets/` (nie są publikowane).
 - Nazwy plików zmienione na opisowe, np. `step-02-dostrzez`, `hero-illustration`, `leaf-left`.
-- Zdjęcia kroków w formacie **AVIF** z fallbackiem **WebP** (element `<picture>`): łącznie z **617 KB do 43 KB** (−93%).
-- Grafiki z przezroczystością (logo, ilustracja, ikona, gałązki) w WebP: z 51 KB do 32 KB.
-- Separator z sercem przerysowany jako **SVG + CSS** zamiast PNG. Jest ostry na każdym ekranie i można go animować („rysowanie” serca).
+- Zdjęcia kroków (oficjalne grafiki 1100 px z gestdobra.pl) w formacie **AVIF** z fallbackiem **WebP**, w dwóch rozmiarach (560 px i 1100 px). Przeglądarka sama wybiera wersję 1× albo 2× (Retina) przez `srcset`.
+- Logo, ilustracja, ikona, gałązki i separator jako **SVG** z Figmy, zoptymalizowane narzędziem SVGO (−50–60% wagi, bez strat wizualnych sprawdzonych piksel po pikselu). Są idealnie ostre na każdym ekranie.
+- Ilustracja hero i ikony osadzone w kodzie jako warstwy (okrąg, gałązka, dłoń, serce), dzięki czemu każdą część można animować osobno. Ikona serce + dłoń jest zdefiniowana raz i używana wielokrotnie (`<use>`).
 
 ### Etap 3 – Fonty
 - Fonty hostowane **lokalnie**, bez Google Fonts. To ważne dla RODO: przeglądarka użytkownika nie łączy się z serwerami Google.
@@ -63,13 +63,14 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 
 ### Etap 5 – Style i responsywność
 - Design tokens w `:root` (kolory, fonty, promienie, cienie, krzywe animacji).
-- Desktop 1440 px odwzorowany 1:1. Niżej płynne skalowanie przez `clamp()` i progi:
-  - **≤ 1360 px**: proporcjonalne kolumny w krokach, gałązki przy separatorach,
-  - **≤ 1280 px**: mniejsza nawigacja,
+- Od wersji 1.1 rozmiary tekstu są w `rem` (respektują ustawienia czcionki w przeglądarce) i skalują się płynnie przez `clamp()`. Typografia jest zmniejszona względem Figmy do standardowych rozmiarów webowych: tekst 17–20 px, nagłówki do 52 px, menu 17 px, przyciski 56 px wysokości (wcześniej 75 px).
+- Progi:
+  - **≥ 1680 px** (MacBook 16", monitory 24"+): szerszy kontener,
+  - **≤ 1280 px**: ciaśniejsza nawigacja i karty,
   - **≤ 1099 px**: menu „hamburger”,
   - **≤ 860 px**: układ jednokolumnowy, zdjęcie nad kartą kroku, treści wyśrodkowane,
   - **≤ 560 px**: przyciski na całą szerokość, mniejsze dekoracje.
-- Sprawdzone widoki: 360, 390, 768, 1024, 1280 i 1440 px.
+- Sprawdzone widoki: 360, 390 (telefony), 768, 1024 (tablety), 1280, 1440 (MacBook 13"), 1512 (MacBook 14") i 1728 px (MacBook 16").
 - Style druku (`@media print`): bez nawigacji i dekoracji, bez cieni.
 
 ### Etap 6 – Interakcje i animacje
@@ -77,9 +78,10 @@ Wszystko w czystym JS i CSS (IntersectionObserver), bez bibliotek. Animowane są
 
 | Element | Efekt |
 |---|---|
-| Hero (przy wejściu) | karta wjeżdża, tytuł, lead i hasła pojawiają się kaskadowo, ilustracja „rozmywa się” do ostrości |
-| Serce nad dłonią (hero, karty) | serce delikatnie unosi się i „oddycha” nad dłonią. To ta sama grafika w dwóch warstwach przyciętych `clip-path`, bez dodatkowych plików |
-| Separator ♥ | linie rosną od serca na zewnątrz, serce się „rysuje”, a potem raz bije |
+| Hero (przy wejściu) | karta wjeżdża, tytuł, lead i hasła pojawiają się kaskadowo |
+| Ilustracja hero | okrąg „rysuje się” dookoła, dłoń wsuwa się, serce opada nad dłoń i dalej delikatnie się unosi, gałązka wyrasta od łodygi i kołysze się na wietrze |
+| Ikona serce + dłoń (karty) | serce delikatnie unosi się i „oddycha” nad dłonią |
+| Separator ♥ | linie rosną od serca na zewnątrz, serce (kształt z projektu) „rysuje się” linią przez animowaną maskę, a potem raz bije |
 | Nagłówki sekcji | słowa pojawiają się po kolei (przesunięcie + rozmycie) |
 | Karty | wjeżdżają od dołu kaskadowo; po najechaniu unoszą się, a cień rośnie |
 | Kroki 01–03 | karty wjeżdżają z boku (naprzemiennie), zdjęcia odsłaniają się „kurtyną” z delikatnym zoomem |
@@ -184,14 +186,15 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 - Przycisk w karcie „Jeden prosty gest” wyśrodkowany (w Figmie lekko w lewo).
 - Odstęp nagłówek → lead w sekcji „Przykłady” ujednolicony z pozostałymi sekcjami (różnica 11 px).
 - W stopce półpauza „–” zamiast dywizu „-” (polska typografia).
+- Od wersji 1.1 skala całego interfejsu jest mniejsza niż w Figmie (tekst 17–20 px zamiast 24 px, nagłówki 52 px zamiast 64 px). Rozmiary 1:1 z projektu wyglądały na laptopach jak „powiększone”.
+- Gałązki ustawione przy separatorach sekcji, żeby na żadnej szerokości ekranu nie nachodziły na treść.
 
 ---
 
 ## 4. Do zrobienia przed publikacją
-- [ ] **Domena**: zamienić `https://example.com/` na docelowy adres w `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml` i `robots.txt`.
+- [ ] **Domena**: zamienić `https://example.com/` na docelowy adres (prawdopodobnie `https://gestdobra.pl/`, gdzie działa obecna strona) w `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml` i `robots.txt`.
 - [ ] **Sekcje „Karta” i „Pytania”**: linki w menu prowadzą do sekcji, których nie ma w projekcie. Potrzebny projekt tych sekcji albo decyzja o usunięciu linków.
 - [ ] **Wersja angielska**: przełącznik pokazuje „English – wkrótce”. Do decyzji: czy i kiedy powstaje (najlepiej jako osobna strona `/en/` z `hreflang`).
-- [ ] **Grafiki w 2× lub SVG**: logo, ilustracja hero, ikona i gałązki są wyeksportowane w 1×, więc na ekranach Retina są lekko miękkie. Eksport SVG z Figmy da idealną ostrość (i mniejsze pliki).
 - [ ] Po uruchomieniu HTTPS: odkomentować HSTS w `.htaccess`.
 - [ ] Dodać stronę do **Google Search Console** i wysłać `sitemap.xml`.
 - [ ] Jeśli pojawi się analityka (np. GA4) lub osadzenia (YouTube, mapy): potrzebny baner zgód + polityka prywatności. Trzeba też dopisać domeny do CSP.
@@ -215,12 +218,21 @@ gest dobra/
 ├── assets/
 │   ├── fonts/              Inter + Bodoni Moda (subset PL) + licencje OFL
 │   └── img/                grafiki AVIF/WebP, ikony, obrazek OG
-├── _design/                projekt z Figmy i oryginalne assety (nie publikować)
+├── _design/                projekt z Figmy, oryginalne SVG i zdjęcia (nie publikować)
 ├── README.md               instrukcja techniczna
 └── PODSUMOWANIE-PROJEKTU.md
 ```
 
 ---
 
-## 6. Czas realizacji
-Pierwsza wiadomość z projektem: 10.10.2026, 15:21. Zakończenie: 16:10. Łącznie **ok. 50 minut**, wszystkie powyższe etapy łącznie z testami i dokumentacją.
+## 6. Historia zmian
+
+| Wersja | Data | Zmiany |
+|---|---|---|
+| 1.0 | 10.10.2026 | Pierwsza wersja: wdrożenie projektu z Figmy, animacje, dostępność, SEO, bezpieczeństwo, strona 404, podgląd na GitHub Pages |
+| 1.1 | 10.10.2026 | Mniejsza, standardowa skala typografii i elementów (po przeglądzie na MacBooku 16"); rozmiary w `rem` + `clamp()`; dopracowana responsywność na wszystkich progach; grafiki wektorowe SVG z Figmy z animacjami warstw; oficjalne zdjęcia kroków w 1× i 2×; usunięte stare pliki rastrowe |
+
+## 7. Czas realizacji
+- Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
+- Publikacja na GitHub Pages i wersja 1.1 (skala, responsywność, SVG, nowe zdjęcia): 16:10–16:50, **ok. 40 minut**.
+- Łącznie **ok. 1,5 godziny**.

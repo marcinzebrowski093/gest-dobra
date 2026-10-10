@@ -44,7 +44,12 @@ Nowe zasoby z zewnętrznych domen (analityka, mapy, wideo) wymagają dopisania t
 
 Przy `prefers-reduced-motion` wszystkie animacje są wyłączane automatycznie.
 
-**Grafiki.** Zdjęcia dodawaj jako AVIF + WebP w `<picture>`, zawsze z `width`/`height` i `alt`. Poniżej pierwszego ekranu dodawaj `loading="lazy"`.
+**Grafiki.**
+- Zdjęcia dodawaj jako AVIF + WebP w `<picture>` w dwóch rozmiarach (1× i 2×, `srcset` + `sizes`), zawsze z `width`/`height` i `alt`. Poniżej pierwszego ekranu dodawaj `loading="lazy"`.
+- Logo, gałązki i ikona to pliki SVG w `assets/img/`. Ilustracja hero, ikona serce + dłoń i serce separatora są wklejone w `index.html` jako warstwy SVG, żeby dało się je animować. Źródłowe pliki z Figmy leżą w `_design/source-assets/svg/`.
+- Każdy nowy plik SVG przepuść przez SVGO: `npx svgo plik.svg`.
+
+**Skala.** Rozmiary tekstu to tokeny `--fs-*` w `:root` (w `rem`, płynnie przez `clamp()`). Zmiana jednego tokenu zmienia dany rozmiar w całym serwisie.
 
 **Fonty.** `assets/fonts/*-var-pl.woff2` to subsety (łacina + polskie znaki) fontów zmiennych Inter (300–700) i Bodoni Moda (400–700, opsz 18). Gdyby zabrakło jakiegoś znaku, wygeneruj subset ponownie z pełnych plików Google Fonts:
 
