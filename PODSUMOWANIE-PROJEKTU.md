@@ -274,6 +274,7 @@ gest dobra/
 | 1.8.0 | 11.10.2026 | Nazwa „Gest Dobra” w treści wszystkich stron i języków jako napis z logotypu (kształty i kolory logo): nagłówki, wstępy, akapity, cytaty, etykiety kart, stopka. Pomijane przyciski, menu, okruszki i meta tagi. Napis zdefiniowany raz w SVG (`<symbol>`) i wielokrotnie użyty; tekst zostaje dla czytników ekranu i Google |
 | 1.8.1 | 11.10.2026 | Odmiana „Gestu Dobra” w krojem Bodoni Moda dobranym do napisu z logo (rozmiar optyczny 96, rozstaw jak w logo, kolory logo), np. „Przykłady gestu dobra”; napis z logo także na przyciskach „Zobacz, jak działa gest dobra” – po najechaniu zmienia kolor na biały razem z przyciskiem; kolory napisu ustawiane klasami CSS (zgodnie z CSP) |
 | 1.9.0 | 11.10.2026 | Nazwa „Gest Dobra” (także „Gestu Dobra”) w treści i na przyciskach jako zwykły tekst w kroju Bodoni Moda (opsz 18) w kolorach logo – zamiast grafiki z logo; wiersze łamią się naturalnie (nagłówek podstrony znów w jednej linii na komputerze); usunięte grafiki napisu i plik Bodoni opsz 96 |
+| 1.9.1 | 11.10.2026 | Przyciski: kolor nazwy „gest dobra” przy najechaniu zmienia się płynnie, w tym samym tempie co tło i tekst przycisku (wcześniej przeskakiwał od razu na biały) |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

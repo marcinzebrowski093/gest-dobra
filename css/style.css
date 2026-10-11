@@ -1251,6 +1251,11 @@ main:focus {
   color: var(--bm-d, #8c5a3c);
 }
 
+/* na przycisku kolor nazwy zmienia się w tym samym tempie co tło i tekst przycisku */
+.btn :is(.brand-name__g, .brand-name__d) {
+  transition: color 0.35s var(--ease-soft);
+}
+
 /* przyciski: nazwa w kolorach logo, po najechaniu (tło zielone) – biała jak tekst przycisku */
 .btn--primary {
   --bm-g: currentColor;
