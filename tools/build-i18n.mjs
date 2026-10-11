@@ -17,6 +17,7 @@
      data-i18n-tpl="{klucz} 1: "      – treść z szablonu
      data-i18n-mode="last-word-brown" – ostatnie słowo w <span class="text-brown">
      data-i18n-mode="brand"           – „Gest Dobra” w <span class="brand"> (krój szeryfowy)
+     data-i18n-mode="logo"            – „Gest Dobra” jako napis z logotypu (SVG ze źródła PL)
    Linki między podstronami zapisuj jako href="./nazwa-pliku-pl.html#kotwica" –
    generator podmieni nazwę pliku na odpowiednik w danym języku.
    ========================================================================== */
@@ -196,6 +197,13 @@ function translateBody(html, lang) {
       inner = `${esc(value.slice(0, i))} <span class="text-brown">${esc(value.slice(i + 1))}</span>`;
     }
     if (/data-i18n-mode="brand"/.test(attrs)) inner = inner.replace(/Gest Dobra[?.!]?/, (b) => `<span class="brand">${b}</span>`);
+    // „logo”: nazwa zastąpiona napisem z logotypu (SVG skopiowane z polskiego źródła), tekst zostaje dla czytników i Google
+    if (/data-i18n-mode="logo"/.test(attrs)) {
+      const mark = m.match(/<span class="brand-mark">[\s\S]*?<\/svg><\/span>/);
+      if (!mark) throw new Error(`${key}: brak napisu z logo w źródle`);
+      if (!/gest dobra/i.test(inner)) throw new Error(`${key} (${lang.code}): w tłumaczeniu brak nazwy „Gest Dobra”`);
+      inner = inner.replace(/gest dobra/i, (name) => mark[0].replace('<span class="visually-hidden">gest dobra</span>', `<span class="visually-hidden">${name}</span>`));
+    }
     return `<${tag}${attrs.replace(' data-i18n="', ' data-i18n-done="')}>${inner}</${tag}>`;
   });
   // szablony

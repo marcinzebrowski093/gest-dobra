@@ -52,7 +52,7 @@ Przy `prefers-reduced-motion` wszystkie animacje są wyłączane automatycznie.
 **Skala.** Rozmiary tekstu to tokeny `--fs-*` w `:root` (w `rem`, płynnie przez `clamp()`). Zmiana jednego tokenu zmienia dany rozmiar w całym serwisie.
 
 **Fonty.**
-- Treść: Inter (300–700). Nagłówki: Brygada 1918 (400–700). Numeracja 01, 02…: Bodoni Moda (`bodoni-moda-cyfry.woff2` zawiera wyłącznie cyfry 0–9, token `--font-numerals`). „Gest Dobra” w nagłówku podstrony: Bodoni Moda (`bodoni-moda-litery.woff2`, token `--font-brand`, klasa `.brand`).
+- Treść: Inter (300–700). Nagłówki: Brygada 1918 (400–700). Numeracja 01, 02…: Bodoni Moda (`bodoni-moda-cyfry.woff2` zawiera wyłącznie cyfry 0–9, token `--font-numerals`). „gest dobra” w nagłówku podstrony to napis z logotypu wstawiony jako SVG (`.brand-mark`, tryb `data-i18n-mode="logo"` w generatorze wersji językowych).
 - Każdy krój ma osobne pliki dla łaciny z polskimi znakami (`*-pl`), greki (`*-el`) i cyrylicy (`*-ru`). Przeglądarka pobiera je przez `unicode-range` tylko wtedy, gdy na stronie są takie znaki.
 - Grubość nagłówków ustawia token `--serif-weight` (600).
 - Gdyby zabrakło jakiegoś znaku, wygeneruj subset ponownie z pełnych plików Google Fonts:

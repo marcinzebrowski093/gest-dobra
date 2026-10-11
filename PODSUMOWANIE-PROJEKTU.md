@@ -52,7 +52,7 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 - `font-display: swap`, preload obu plików i fonty zastępcze o dopasowanych metrykach (`size-adjust`, `ascent-override`). Tekst nie „skacze” po doładowaniu fontu (CLS = 0).
 - **Od wersji 1.4 nagłówki są w kroju Brygada 1918** (wybór klienta spośród 5 propozycji). To polski krój odtworzony na 100-lecie niepodległości z matryc dawnej Państwowej Odlewni Czcionek. Ma pełną grekę i cyrylicę, więc nagłówki wyglądają identycznie we wszystkich 4 językach (wcześniej EL i RU dostawały zastępczy Noto Serif Display). Pliki: 19 KB (łacina), 8 KB (greka), 12 KB (cyrylica).
 - Numeracja 01, 02… zostaje w Bodoni Moda. Plik zawiera wyłącznie cyfry, więc waży 2,7 KB zamiast 22 KB.
-- Od wersji 1.5 „Gest Dobra” w nagłówku podstrony „Jak działa Gest Dobra?” jest w oryginalnym Bodoni Moda (rozmiar optyczny 18), tak jak w projekcie z Figmy. Litery łacińskie Bodoni to osobny plik (13 KB), pobierany tylko na podstronie.
+- Od wersji 1.7 nagłówek podstrony brzmi „Jak działa gest dobra”, a „gest dobra” to napis z logotypu (te same kształty liter i kolory: „gest” zielone, „dobra” brązowe), wstawiony jako SVG i wyrównany do linii bazowej tekstu. Czytniki ekranu i Google odczytują pełny tekst nagłówka. W wersjach EN, EL i RU nazwa w nagłówku też jest napisem z logo.
 - Fonty greki i cyrylicy ładują się tylko na stronach, które zawierają te znaki (`unicode-range`). Na stronach EL i RU z wyprzedzeniem (preload) pobierany jest tylko font tekstu w danym alfabecie.
 - Licencje OFL dołączone w `assets/fonts/`.
 
@@ -267,6 +267,7 @@ gest dobra/
 | 1.6.0 | 11.10.2026 | Sekcja „Otrzymałeś Gest Dobra.”: zamiast małej ikony dłoni z sercem (powtarzała ilustrację hero) karta Gestu Dobra – tył z kodem QR i napisem „Zeskanuj i zobacz, co właśnie otrzymałeś” na wierzchu, przód za nim (to, co odbiorca trzyma w ręku); układ tekst + karta; wyrównane odstępy (równe marginesy wewnętrzne i zewnętrzne na każdym ekranie, przycisk wyrównany do tekstu) |
 | 1.6.1 | 11.10.2026 | Flaga UK w przełączniku języka przerysowana w proporcjach 3:2 – wypełnia pole jak pozostałe flagi (wcześniej 2:1 z pustymi paskami) |
 | 1.6.3 | 11.10.2026 | Przywrócone poprzednie położenie gałązek (zmiana 1.6.2 cofnięta – po mocniejszym schowaniu gałązki wyglądały jak bez łodygi). Docelowo: nowa grafika gałązek z dłuższą łodygą wychodzącą poza krawędź pliku |
+| 1.7.0 | 11.10.2026 | Nagłówek podstrony „Jak działa gest dobra”: „gest dobra” jako napis z logotypu (kształty i kolory logo), we wszystkich językach; usunięty niepotrzebny już plik liter Bodoni |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
