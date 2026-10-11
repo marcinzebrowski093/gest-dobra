@@ -240,13 +240,14 @@ function prefixPaths(html, prefix) {
 /* ---------- „Gest Dobra” jako napis z logotypu ----------
    W treści (nagłówki, akapity, cytaty, podpisy, stopka) nazwa jest zastępowana napisem z logo
    (symbol #gd-wordmark ze sprite'a). Tekst zostaje dla czytników ekranu, Google i kopiowania.
-   Pomijane: <head>, linki i przyciski (kolory logo nie pasują do tła przycisku), nawigacja,
+   Odmiany („Gestu Dobra”) – tekstem w kroju Bodoni dobranym do logo. Na przyciskach kolory zmieniają się z przyciskiem.
+   Pomijane: <head>, zwykłe linki, nawigacja,
    okruszki, SVG, teksty ukryte i miejsca, w których napis już jest. Operacja jest idempotentna. */
 const BRAND_MARK = (name) => `<span class="brand-mark"><span class="visually-hidden">${name}</span>` +
   '<svg class="brand-mark__svg" viewBox="0 0 144.3 28.3" aria-hidden="true" focusable="false"><use href="#gd-wordmark"/></svg></span>';
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 const CONTENT = new Set(['h1', 'h2', 'h3', 'h4', 'p', 'li', 'dt', 'dd', 'figcaption', 'blockquote']);
-const SKIP_TAGS = new Set(['a', 'button', 'nav', 'svg', 'script', 'style', 'title', 'head']);
+const SKIP_TAGS = new Set(['nav', 'svg', 'script', 'style', 'title', 'head']);
 function brandify(html) {
   const start = html.indexOf('<body');
   if (start < 0) return { html, count: 0 };
@@ -268,10 +269,17 @@ function brandify(html) {
       stack.push({ n, cls });
       continue;
     }
-    if (!/\bGest Dobra\b/.test(t)) continue;
-    const skip = stack.some((s) => SKIP_TAGS.has(s.n) || /\b(visually-hidden|brand-mark|btn|crumbs|lang|svg-sprite)\b/.test(s.cls));
-    if (skip || !stack.some((s) => CONTENT.has(s.n))) continue;
-    parts[i] = t.replace(/\bGest Dobra\b/g, (m) => { count++; return BRAND_MARK(m); });
+    if (!/\bGest[a-ząćęłńóśźż]* Dobr/.test(t)) continue;
+    const inBtn = stack.some((s) => /\bbtn\b/.test(s.cls));
+    const skip = stack.some((s) => SKIP_TAGS.has(s.n) || (s.n === 'a' && !/\bbtn\b/.test(s.cls)) ||
+      /\b(visually-hidden|brand-mark|brand-text|crumbs|lang|svg-sprite)\b/.test(s.cls));
+    if (skip || !(inBtn || stack.some((s) => CONTENT.has(s.n)))) continue;
+    // forma podstawowa – napis z logo (SVG); odmiany (np. „Gestu Dobra”) – krój Bodoni dobrany do logo, kolory logo
+    parts[i] = t.replace(/\b(Gest[a-ząćęłńóśźż]*) (Dobr[a-ząćęłńóśźż]*)/g, (m, a, b) => {
+      count++;
+      return m === 'Gest Dobra' ? BRAND_MARK(m)
+        : `<span class="brand-text"><span class="brand-text__g">${a}</span> <span class="brand-text__d">${b}</span></span>`;
+    });
   }
   return { html: head + parts.join(''), count };
 }

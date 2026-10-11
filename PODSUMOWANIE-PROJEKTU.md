@@ -272,6 +272,7 @@ gest dobra/
 | 1.7.2 | 11.10.2026 | „Jak działa” w nagłówku podstrony w kroju Brygada 1918 (jak pozostałe nagłówki), we wszystkich językach; na podstronach EL/RU wcześniejsze pobieranie fontów nagłówka (greka/cyrylica i łacina), dzięki czemu nagłówek nie przeskakuje przy ładowaniu (CLS 0,001) |
 | 1.7.3 | 11.10.2026 | „Przyjmij dobro.” (nagłówek strony głównej) w kroju Brygada 1918, we wszystkich językach; na stronach głównych EL/RU wcześniejsze pobieranie fontów nagłówka (bez przeskoku układu) |
 | 1.8.0 | 11.10.2026 | Nazwa „Gest Dobra” w treści wszystkich stron i języków jako napis z logotypu (kształty i kolory logo): nagłówki, wstępy, akapity, cytaty, etykiety kart, stopka. Pomijane przyciski, menu, okruszki i meta tagi. Napis zdefiniowany raz w SVG (`<symbol>`) i wielokrotnie użyty; tekst zostaje dla czytników ekranu i Google |
+| 1.8.1 | 11.10.2026 | Odmiana „Gestu Dobra” w krojem Bodoni Moda dobranym do napisu z logo (rozmiar optyczny 96, rozstaw jak w logo, kolory logo), np. „Przykłady gestu dobra”; napis z logo także na przyciskach „Zobacz, jak działa gest dobra” – po najechaniu zmienia kolor na biały razem z przyciskiem; kolory napisu ustawiane klasami CSS (zgodnie z CSP) |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
