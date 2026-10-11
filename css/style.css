@@ -1213,26 +1213,37 @@ main:focus {
   text-wrap: balance;
 }
 
-/* „gest dobra” w nagłówku podstrony – napis z logotypu (te same kształty i kolory co w logo).
-   Wysokość 1.3em; vertical-align ustawia linię bazową napisu na linii bazowej tekstu. */
-/* odstęp przed napisem: w tej samej linii – margines tekstu przed nim; po złamaniu linii – margines u góry */
-.brand-lead {
-  margin-right: 0.16em;
-}
-
+/* „gest dobra” jako napis z logotypu (symbol #gd-wordmark).
+   --bm-h: wysokość napisu względem tekstu – dobrana tak, by wysokość małych liter logo
+   odpowiadała otaczającemu krojowi; vertical-align stawia linię bazową napisu na linii tekstu. */
 .brand-mark {
-  display: inline-block;
-  margin-top: 0.14em;
+  --bm-h: 1.2em;
   white-space: nowrap;
 }
 
 .brand-mark__svg {
   display: inline-block;
-  width: calc(1.3em * 144.3 / 28.3);
-  height: 1.3em;
+  width: calc(var(--bm-h) * 144.3 / 28.3);
+  height: var(--bm-h);
   max-width: none;
-  vertical-align: -0.335em;
+  margin-inline: 0.04em;
+  vertical-align: calc(var(--bm-h) * -0.258);
   overflow: visible;
+}
+
+:is(h2, h3, .section__title, .received__title, .cta-card__title) .brand-mark {
+  --bm-h: 1.14em;
+}
+
+/* nagłówek podstrony: większy napis, z odstępem przed nim */
+.hero__title--sub .brand-mark {
+  --bm-h: 1.3em;
+  display: inline-block;
+  margin-top: 0.14em;
+}
+
+.brand-lead {
+  margin-right: 0.16em;
 }
 
 /* duża karta-panel (jak karta hero) */

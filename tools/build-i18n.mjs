@@ -237,6 +237,45 @@ function prefixPaths(html, prefix) {
   return html;
 }
 
+/* ---------- „Gest Dobra” jako napis z logotypu ----------
+   W treści (nagłówki, akapity, cytaty, podpisy, stopka) nazwa jest zastępowana napisem z logo
+   (symbol #gd-wordmark ze sprite'a). Tekst zostaje dla czytników ekranu, Google i kopiowania.
+   Pomijane: <head>, linki i przyciski (kolory logo nie pasują do tła przycisku), nawigacja,
+   okruszki, SVG, teksty ukryte i miejsca, w których napis już jest. Operacja jest idempotentna. */
+const BRAND_MARK = (name) => `<span class="brand-mark"><span class="visually-hidden">${name}</span>` +
+  '<svg class="brand-mark__svg" viewBox="0 0 144.3 28.3" aria-hidden="true" focusable="false"><use href="#gd-wordmark"/></svg></span>';
+const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+const CONTENT = new Set(['h1', 'h2', 'h3', 'h4', 'p', 'li', 'dt', 'dd', 'figcaption', 'blockquote']);
+const SKIP_TAGS = new Set(['a', 'button', 'nav', 'svg', 'script', 'style', 'title', 'head']);
+function brandify(html) {
+  const start = html.indexOf('<body');
+  if (start < 0) return { html, count: 0 };
+  const head = html.slice(0, start);
+  const parts = html.slice(start).split(/(<[^>]+>)/);
+  const stack = []; let count = 0;
+  for (let i = 0; i < parts.length; i++) {
+    const t = parts[i];
+    if (!t) continue;
+    if (t[0] === '<') {
+      if (t.startsWith('<!--') || t.startsWith('<!')) continue;
+      const close = t.match(/^<\/([a-zA-Z0-9]+)/);
+      if (close) { const n = close[1].toLowerCase(); const k = stack.map((s) => s.n).lastIndexOf(n); if (k >= 0) stack.length = k; continue; }
+      const open = t.match(/^<([a-zA-Z0-9]+)/);
+      if (!open) continue;
+      const n = open[1].toLowerCase();
+      if (VOID.has(n) || t.endsWith('/>')) continue;
+      const cls = (t.match(/\sclass="([^"]*)"/) || [, ''])[1];
+      stack.push({ n, cls });
+      continue;
+    }
+    if (!/\bGest Dobra\b/.test(t)) continue;
+    const skip = stack.some((s) => SKIP_TAGS.has(s.n) || /\b(visually-hidden|brand-mark|btn|crumbs|lang|svg-sprite)\b/.test(s.cls));
+    if (skip || !stack.some((s) => CONTENT.has(s.n))) continue;
+    parts[i] = t.replace(/\bGest Dobra\b/g, (m) => { count++; return BRAND_MARK(m); });
+  }
+  return { html: head + parts.join(''), count };
+}
+
 /* ---------- budowanie ---------- */
 console.log('Gest Dobra – wersje językowe');
 const PL = LANGS[0];
@@ -245,6 +284,8 @@ for (const page of PAGES) {
   source = replaceBlock(source, 'head', headBlock(page, PL));
   source = replaceBlock(source, 'jsonld', jsonldBlock(page, PL, source));
   source = replaceBlock(source, 'lang', langBlock(page, PL));
+  const plBrand = brandify(source); source = plBrand.html;
+  console.log(`  ${page.src}: napis z logo w miejsce „Gest Dobra” – nowych ${plBrand.count}`);
   write(page.src, source);
 
   for (const lang of LANGS.slice(1)) {
@@ -261,6 +302,7 @@ for (const page of PAGES) {
     // (nagłówek Brygadą zawiera też łacińskie znaki – spacje, interpunkcję – więc łacińska Brygada zostaje)
     if (lang.fonts) html = html.replace(/\n\s*<link rel="preload" href="assets\/fonts\/inter-var-pl\.woff2"[^>]*>/g, '');
     html = stripMarkers(html);
+    html = brandify(html).html;
     html = relinkPages(html, lang);
     html = prefixPaths(html, '../'.repeat(file.split('/').length - 1));
     html = html.replace('<!doctype html>\n', `<!doctype html>\n<!-- Plik wygenerowany automatycznie (tools/build-i18n.mjs) z ${page.src} + i18n/${lang.code}.json – nie edytuj ręcznie. -->\n`);

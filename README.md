@@ -86,5 +86,7 @@ Skrypt odświeża w `index.html` sekcję `<head>` (title, opisy, canonical, href
 - **Domena:** ustaw ją w stałej `SITE` na górze `tools/build-i18n.mjs`.
 - **Obrazki OG** (`assets/img/og-image-*.jpg`) są wygenerowane z tekstów hero. Przy zmianie hasła trzeba je odświeżyć.
 
+**Nazwa „Gest Dobra” jako napis z logo.** Generator (`brandify` w `tools/build-i18n.mjs`) zamienia w treści każde „Gest Dobra” na napis z logotypu (`<symbol id="gd-wordmark">` w sprite na górze strony). Wystarczy pisać zwykły tekst „Gest Dobra” i uruchomić generator. Odmienione formy (np. „Gestu Dobra”) oraz przyciski, linki, menu i okruszki zostają zwykłym tekstem. Wielkość napisu ustawia zmienna `--bm-h` w CSS.
+
 ## Wsparcie przeglądarek
 Aktualne Chrome, Edge, Firefox, Safari (macOS/iOS 16+), Samsung Internet. Bez JavaScriptu cała treść jest widoczna, tylko bez animacji.
