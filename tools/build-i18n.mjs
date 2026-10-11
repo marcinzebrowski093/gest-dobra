@@ -33,8 +33,8 @@ const SITE = 'https://example.com/';
 const LANGS = [
   { code: 'pl', dir: '', html: 'pl', hreflang: 'pl', og: 'pl_PL', ld: 'pl-PL', label: 'PL', name: 'Polski', flag: 'pl', ogImage: 'og-image.jpg' },
   { code: 'en', dir: 'en/', html: 'en-GB', hreflang: 'en', og: 'en_GB', ld: 'en-GB', label: 'GB', name: 'English', flag: 'uk', ogImage: 'og-image-en.jpg' },
-  { code: 'el', dir: 'el/', html: 'el', hreflang: 'el', og: 'el_GR', ld: 'el-GR', label: 'GR', name: 'Ελληνικά', flag: 'gr', ogImage: 'og-image-el.jpg', fonts: ['inter-var-el.woff2'] },
-  { code: 'ru', dir: 'ru/', html: 'ru', hreflang: 'ru', og: 'ru_RU', ld: 'ru-RU', label: 'RU', name: 'Русский', flag: 'ru', ogImage: 'og-image-ru.jpg', fonts: ['inter-var-ru.woff2'] },
+  { code: 'el', dir: 'el/', html: 'el', hreflang: 'el', og: 'el_GR', ld: 'el-GR', label: 'GR', name: 'Ελληνικά', flag: 'gr', ogImage: 'og-image-el.jpg', fonts: ['inter-var-el.woff2'], headingFont: 'brygada-1918-var-el.woff2' },
+  { code: 'ru', dir: 'ru/', html: 'ru', hreflang: 'ru', og: 'ru_RU', ld: 'ru-RU', label: 'RU', name: 'Русский', flag: 'ru', ogImage: 'og-image-ru.jpg', fonts: ['inter-var-ru.woff2'], headingFont: 'brygada-1918-var-ru.woff2' },
 ];
 
 // Strony serwisu – adresy jak na dotychczasowej gestdobra.pl (zachowanie linków i pozycji w Google)
@@ -96,6 +96,8 @@ function headBlock(page, lang) {
     `  <meta name="twitter:card" content="summary_large_image">`,
     // font tekstu w alfabecie danego języka (greka / cyrylica) – reszta ładuje się, gdy jest potrzebna
     ...(lang.fonts || []).map((f) => `  <link rel="preload" href="assets/fonts/${f}" as="font" type="font/woff2" crossorigin>`),
+    // podstrona: nagłówek na pierwszym ekranie jest w Brygadzie – font alfabetu musi być gotowy od razu (brak przesunięć układu)
+    ...(page.id === 'how' && lang.headingFont ? [`  <link rel="preload" href="assets/fonts/${lang.headingFont}" as="font" type="font/woff2" crossorigin>`] : []),
   ];
   return lines.join('\n') + '\n';
 }
@@ -256,7 +258,10 @@ for (const page of PAGES) {
     html = html.replace(/<html lang="[^"]*"/, `<html lang="${lang.html}"`);
     // w EL/RU nagłówki są w innym alfabecie – preload łacińskiej Brygady tylko spowalniałby pierwszy ekran
     // to samo dla łacińskiego Intera – na tych stronach łacina to tylko pojedyncze słowa (np. „Gest Dobra”)
-    if (lang.fonts) html = html.replace(/\n\s*<link rel="preload" href="assets\/fonts\/(brygada-1918-var-pl|inter-var-pl)\.woff2"[^>]*>/g, '');
+    // (na podstronie nagłówek Brygadą zawiera też łacińskie znaki – spacje, interpunkcję – więc łacińska Brygada zostaje)
+    if (lang.fonts) html = html.replace(page.id === 'how'
+      ? /\n\s*<link rel="preload" href="assets\/fonts\/inter-var-pl\.woff2"[^>]*>/g
+      : /\n\s*<link rel="preload" href="assets\/fonts\/(brygada-1918-var-pl|inter-var-pl)\.woff2"[^>]*>/g, '');
     html = stripMarkers(html);
     html = relinkPages(html, lang);
     html = prefixPaths(html, '../'.repeat(file.split('/').length - 1));
