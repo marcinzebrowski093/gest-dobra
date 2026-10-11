@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://example.com/en/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://example.com/el/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://example.com/ru/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://example.com/chce-zrozumiec-wiecej.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://example.com/en/how-it-works.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
@@ -57,7 +57,7 @@
   </url>
   <url>
     <loc>https://example.com/el/pos-leitourgei.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://example.com/ru/kak-eto-rabotaet.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
     <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>

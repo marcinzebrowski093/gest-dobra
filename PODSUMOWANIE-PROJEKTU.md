@@ -52,6 +52,7 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 - `font-display: swap`, preload obu plików i fonty zastępcze o dopasowanych metrykach (`size-adjust`, `ascent-override`). Tekst nie „skacze” po doładowaniu fontu (CLS = 0).
 - **Od wersji 1.4 nagłówki są w kroju Brygada 1918** (wybór klienta spośród 5 propozycji). To polski krój odtworzony na 100-lecie niepodległości z matryc dawnej Państwowej Odlewni Czcionek. Ma pełną grekę i cyrylicę, więc nagłówki wyglądają identycznie we wszystkich 4 językach (wcześniej EL i RU dostawały zastępczy Noto Serif Display). Pliki: 19 KB (łacina), 8 KB (greka), 12 KB (cyrylica).
 - Numeracja 01, 02… zostaje w Bodoni Moda. Plik zawiera wyłącznie cyfry, więc waży 2,7 KB zamiast 22 KB.
+- Od wersji 1.5 „Gest Dobra” w nagłówku podstrony „Jak działa Gest Dobra?” jest w oryginalnym Bodoni Moda (rozmiar optyczny 18), tak jak w projekcie z Figmy. Litery łacińskie Bodoni to osobny plik (13 KB), pobierany tylko na podstronie.
 - Fonty greki i cyrylicy ładują się tylko na stronach, które zawierają te znaki (`unicode-range`). Na stronach EL i RU z wyprzedzeniem (preload) pobierany jest tylko font tekstu w danym alfabecie.
 - Licencje OFL dołączone w `assets/fonts/`.
 
@@ -262,6 +263,7 @@ gest dobra/
 | 1.2.0 | 10.10.2026 | Wersje językowe EN, EL (grecki) i RU z oficjalnymi tłumaczeniami (adresy jak na obecnej stronie); przełącznik języka z flagami (siatka 2×2); hreflang i sitemap z alternatywami; obrazki OG w każdym języku; fonty dla greki i cyrylicy ładowane tylko na tych wersjach |
 | 1.3.0 | 10.10.2026 | Podstrona „Jak działa Gest Dobra?” w 4 językach (adresy jak na obecnej stronie): okruszki, sekcje „Dlaczego powstał”, „W jaki sposób dobro może żyć dłużej” (5 kroków), „Dlaczego karta jest ważna” (autorski układ: wachlarz kart z poświatą, panorama trzech scen z podpisami w HTML zamiast tabliczki i napisów w obrazie), „Co naprawdę przekazujemy”, pytania i „Najprostsza myśl”; dane strukturalne BreadcrumbList + FAQPage; menu „Karta” i „Pytania” oraz przyciski „Zobacz, jak działa” prowadzą do podstrony; generator obsługuje wiele stron |
 | 1.4.0 | 10.10.2026 | Nagłówki w kroju Brygada 1918 we wszystkich językach (wybór spośród 5 propozycji pokazanych na stronie porównawczej z podglądem na żywo); numeracja 01, 02… w cyfrach Bodoni Moda (plik 2,7 KB); usunięte fonty zastępcze greki i cyrylicy; animacje wejścia startują od opacity 0.01, więc LCP spadł do 1,1–1,4 s na telefonie |
+| 1.5.0 | 11.10.2026 | Podstrona: „Gest Dobra?” w nagłówku w oryginalnym Bodoni Moda 18; ikony 5 kroków z przezroczystym tłem (bez białych kwadratów, poświaty zachowane); grafika z sercami przycięta tak, by wypełniała całe pole bez wyblakłych brzegów; sekcja „Dlaczego Gest Dobra nie wymaga rewanżu?” z większymi odstępami (więcej oddechu) |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

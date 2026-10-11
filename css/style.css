@@ -65,13 +65,24 @@
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
+/* Bodoni Moda (rozmiar optyczny 18): cyfry – numeracja 01, 02…; litery łacińskie – „Gest Dobra” w nagłówku podstrony.
+   Dwa małe pliki: przeglądarka pobiera tylko ten, którego znaki są na stronie. */
 @font-face {
-  font-family: "Bodoni Moda Cyfry";
+  font-family: "Bodoni Moda";
   src: url("../assets/fonts/bodoni-moda-cyfry.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0030-0039;
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("../assets/fonts/bodoni-moda-litery.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0;
 }
 
 /* Fonty zastępcze o dopasowanych metrykach – minimalizują przeskok układu (CLS) */
@@ -114,7 +125,8 @@
 
   --font-sans: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Brygada 1918", "Brygada Fallback", Georgia, serif;
-  --font-numerals: "Bodoni Moda Cyfry", var(--font-serif); /* numeracja 01, 02… */
+  --font-numerals: "Bodoni Moda", var(--font-serif); /* numeracja 01, 02… */
+  --font-brand: "Bodoni Moda", var(--font-serif);    /* „Gest Dobra” w nagłówku podstrony */
   --serif-weight: 600;
 
   /* skala typografii */
@@ -1172,8 +1184,8 @@ main:focus {
 }
 
 .brand {
-  font-family: var(--font-serif);
-  font-weight: var(--serif-weight);
+  font-family: var(--font-brand);
+  font-weight: 700;
   font-size: 1.04em;
   white-space: nowrap;
 }
@@ -1279,18 +1291,17 @@ main:focus {
   padding-top: 18px;
 }
 
+/* ikony z przezroczystym tłem – leżą bezpośrednio na tle kafelka */
 .life-step__icon picture {
   display: grid;
   place-items: center;
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 18px;
-  background: var(--c-white);
 }
 
 .life-step__icon img {
-  width: 62%;
-  max-width: 120px;
+  width: 66%;
+  max-width: 128px;
   transition: transform 0.6s var(--ease-out);
 }
 
@@ -1307,20 +1318,31 @@ main:focus {
 .banner img {
   aspect-ratio: 2.6 / 1;
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center 45%;
 }
 
 /* --- Dlaczego Gest Dobra nie wymaga rewanżu? --- */
 .card--norev {
-  margin-top: 48px;
+  margin-top: 56px;
+  padding: 52px 64px 56px;
 }
 
 .card--norev .card__title {
   font-size: 1.375rem;
 }
 
+.card--norev p {
+  max-width: 60rem;
+  margin-top: 18px;
+  line-height: 1.7;
+}
+
 .card--norev p + p {
-  margin-top: 12px;
+  margin-top: 14px;
+}
+
+.card--norev .quote {
+  margin-top: 34px;
 }
 
 /* --- Dlaczego karta jest ważna? (projekt autorski) --- */
@@ -2131,7 +2153,7 @@ main:focus {
   }
 
   .life-step:last-child .life-step__icon img {
-    width: 96px;
+    width: 92px;
   }
 
   .karta {
@@ -2162,6 +2184,18 @@ main:focus {
   .card--norev,
   .panel--card {
     margin-top: 36px;
+  }
+
+  .card--norev {
+    padding: 36px 24px 40px;
+  }
+
+  .card--norev p {
+    line-height: 1.65;
+  }
+
+  .card--norev .quote {
+    margin-top: 26px;
   }
 }
 
