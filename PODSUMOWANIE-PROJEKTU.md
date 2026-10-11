@@ -265,6 +265,7 @@ gest dobra/
 | 1.4.0 | 10.10.2026 | Nagłówki w kroju Brygada 1918 we wszystkich językach (wybór spośród 5 propozycji pokazanych na stronie porównawczej z podglądem na żywo); numeracja 01, 02… w cyfrach Bodoni Moda (plik 2,7 KB); usunięte fonty zastępcze greki i cyrylicy; animacje wejścia startują od opacity 0.01, więc LCP spadł do 1,1–1,4 s na telefonie |
 | 1.5.0 | 11.10.2026 | Podstrona: „Gest Dobra?” w nagłówku w oryginalnym Bodoni Moda 18; ikony 5 kroków z przezroczystym tłem (bez białych kwadratów, poświaty zachowane); grafika z sercami przycięta tak, by wypełniała całe pole bez wyblakłych brzegów; sekcja „Dlaczego Gest Dobra nie wymaga rewanżu?” z większymi odstępami (więcej oddechu) |
 | 1.6.0 | 11.10.2026 | Sekcja „Otrzymałeś Gest Dobra.”: zamiast małej ikony dłoni z sercem (powtarzała ilustrację hero) karta Gestu Dobra – tył z kodem QR i napisem „Zeskanuj i zobacz, co właśnie otrzymałeś” na wierzchu, przód za nim (to, co odbiorca trzyma w ręku); układ tekst + karta; wyrównane odstępy (równe marginesy wewnętrzne i zewnętrzne na każdym ekranie, przycisk wyrównany do tekstu) |
+| 1.6.1 | 11.10.2026 | Flaga UK w przełączniku języka przerysowana w proporcjach 3:2 – wypełnia pole jak pozostałe flagi (wcześniej 2:1 z pustymi paskami) |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

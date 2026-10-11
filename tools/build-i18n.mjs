@@ -31,7 +31,7 @@ const SITE = 'https://example.com/';
 
 const LANGS = [
   { code: 'pl', dir: '', html: 'pl', hreflang: 'pl', og: 'pl_PL', ld: 'pl-PL', label: 'PL', name: 'Polski', flag: 'pl', ogImage: 'og-image.jpg' },
-  { code: 'en', dir: 'en/', html: 'en-GB', hreflang: 'en', og: 'en_GB', ld: 'en-GB', label: 'GB', name: 'English', flag: 'gb', ogImage: 'og-image-en.jpg' },
+  { code: 'en', dir: 'en/', html: 'en-GB', hreflang: 'en', og: 'en_GB', ld: 'en-GB', label: 'GB', name: 'English', flag: 'uk', ogImage: 'og-image-en.jpg' },
   { code: 'el', dir: 'el/', html: 'el', hreflang: 'el', og: 'el_GR', ld: 'el-GR', label: 'GR', name: 'Ελληνικά', flag: 'gr', ogImage: 'og-image-el.jpg', fonts: ['inter-var-el.woff2'] },
   { code: 'ru', dir: 'ru/', html: 'ru', hreflang: 'ru', og: 'ru_RU', ld: 'ru-RU', label: 'RU', name: 'Русский', flag: 'ru', ogImage: 'og-image-ru.jpg', fonts: ['inter-var-ru.woff2'] },
 ];
