@@ -44,8 +44,8 @@
   <link rel="preload" href="assets/fonts/inter-var-pl.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/brygada-1918-var-pl.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css?v=1.5.0">
-  <script src="js/main.js?v=1.5.0" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=1.6.0">
+  <script src="js/main.js?v=1.6.0" defer></script>
 
   <!-- i18n:jsonld – generowane, nie edytuj ręcznie -->
   <script type="application/ld+json">
@@ -183,17 +183,21 @@
           </div>
 
           <div class="received anim-load" data-delay=".55">
-            <div class="received__icon art art--icon" aria-hidden="true">
-              <svg class="art__layer art__hand" viewBox="0 0 123 108" focusable="false"><use href="#gd-hand"/></svg>
-              <svg class="art__layer art__heart" viewBox="0 0 123 108" focusable="false"><use href="#gd-heart"/></svg>
+            <div class="received__text">
+              <h2 class="received__title" data-i18n="received.title" data-i18n-mode="last-word-brown">Otrzymałeś Gest <span class="text-brown">Dobra.</span></h2>
+              <p data-i18n="received.p1">Ktoś zrobił dla Ciebie coś dobrego bez oczekiwania zapłaty lub rewanżu.</p>
+              <p class="received__strong" data-i18n="received.strong">Nie jesteś nic winien.</p>
+              <p class="received__last" data-i18n="received.p2">Jeśli kiedyś będziesz miał możliwość, przekaż dobro komuś innemu w&nbsp;podobny sposób.</p>
+              <div class="received__cta">
+                <a class="btn btn--primary" href="#o-idei" data-i18n="received.cta">Dowiedz się więcej</a>
+              </div>
             </div>
-            <h2 class="received__title" data-i18n="received.title" data-i18n-mode="last-word-brown">Otrzymałeś Gest <span class="text-brown">Dobra.</span></h2>
-            <p data-i18n="received.p1">Ktoś zrobił dla Ciebie coś dobrego bez oczekiwania zapłaty lub rewanżu.</p>
-            <p class="received__strong" data-i18n="received.strong">Nie jesteś nic winien.</p>
-            <p class="received__last" data-i18n="received.p2">Jeśli kiedyś będziesz miał możliwość, przekaż dobro komuś innemu w&nbsp;podobny sposób.</p>
-            <div class="received__cta">
-              <a class="btn btn--primary" href="#o-idei" data-i18n="received.cta">Dowiedz się więcej</a>
-            </div>
+            <figure class="received__cards" data-reveal="cards">
+              <div class="karta__cards karta__cards--received">
+                <img class="karta__card karta__card--back" src="assets/img/jak-dziala/karta-tyl.webp" width="326" height="512" alt="Tył karty Gestu Dobra: kod QR prowadzący na gestdobra.pl i krótkie wyjaśnienie idei" data-i18n-attr="alt:sub.card.backAlt" loading="lazy" decoding="async">
+                <img class="karta__card karta__card--front" src="assets/img/jak-dziala/karta-przod.webp" width="326" height="512" alt="Przód karty Gestu Dobra: logo z sercem nad dłonią i napis „Możesz go zatrzymać albo przekazać dalej…”" data-i18n-attr="alt:sub.card.frontAlt" loading="lazy" decoding="async">
+              </div>
+            </figure>
           </div>
         </div>
       </div>

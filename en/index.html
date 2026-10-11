@@ -45,8 +45,8 @@
   <link rel="preload" href="../assets/fonts/inter-var-pl.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/brygada-1918-var-pl.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="../css/style.css?v=1.5.0">
-  <script src="../js/main.js?v=1.5.0" defer></script>
+  <link rel="stylesheet" href="../css/style.css?v=1.6.0">
+  <script src="../js/main.js?v=1.6.0" defer></script>
 
   <!-- i18n:jsonld – generowane, nie edytuj ręcznie -->
   <script type="application/ld+json">
@@ -184,17 +184,21 @@
           </div>
 
           <div class="received anim-load" data-delay=".55">
-            <div class="received__icon art art--icon" aria-hidden="true">
-              <svg class="art__layer art__hand" viewBox="0 0 123 108" focusable="false"><use href="#gd-hand"/></svg>
-              <svg class="art__layer art__heart" viewBox="0 0 123 108" focusable="false"><use href="#gd-heart"/></svg>
+            <div class="received__text">
+              <h2 class="received__title">You have received a Gest <span class="text-brown">Dobra.</span></h2>
+              <p>Someone has done something kind for you without expecting payment or a favour in return.</p>
+              <p class="received__strong">You owe nothing in return.</p>
+              <p class="received__last">If you ever have the opportunity, offer the same kind of generosity to someone else.</p>
+              <div class="received__cta">
+                <a class="btn btn--primary" href="#o-idei">Learn More</a>
+              </div>
             </div>
-            <h2 class="received__title">You have received a Gest <span class="text-brown">Dobra.</span></h2>
-            <p>Someone has done something kind for you without expecting payment or a favour in return.</p>
-            <p class="received__strong">You owe nothing in return.</p>
-            <p class="received__last">If you ever have the opportunity, offer the same kind of generosity to someone else.</p>
-            <div class="received__cta">
-              <a class="btn btn--primary" href="#o-idei">Learn More</a>
-            </div>
+            <figure class="received__cards" data-reveal="cards">
+              <div class="karta__cards karta__cards--received">
+                <img class="karta__card karta__card--back" src="../assets/img/jak-dziala/karta-tyl.webp" width="326" height="512" alt="Back of the Gest Dobra card: a QR code linking to gestdobra.pl and a short explanation of the idea in Polish" loading="lazy" decoding="async">
+                <img class="karta__card karta__card--front" src="../assets/img/jak-dziala/karta-przod.webp" width="326" height="512" alt="Front of the Gest Dobra card: the logo with a heart above an open hand and the words “You may keep it or pass it on…” in Polish" loading="lazy" decoding="async">
+              </div>
+            </figure>
           </div>
         </div>
       </div>

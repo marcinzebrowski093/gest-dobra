@@ -665,7 +665,7 @@ main:focus {
 
 .hero__card {
   position: relative;
-  padding: 52px 64px 60px;
+  padding: 52px 64px 64px;
   border: var(--border-soft);
   border-radius: var(--radius-hero);
   background: var(--c-cream);
@@ -761,24 +761,21 @@ main:focus {
   animation: heart-float-sm var(--heart-float-dur) var(--ease-soft) var(--heart-float-delay) infinite;
 }
 
-/* karta „Otrzymałeś Gest Dobra.” */
+/* karta „Otrzymałeś Gest Dobra.” – tekst + karta Gestu Dobra (to, co odbiorca trzyma w ręku) */
 .received {
   position: relative;
-  margin-top: 48px;
-  padding: 52px 52px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 272px);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  margin-top: 56px;
+  padding: 56px 64px;
   border: 1px solid #e6e0d8;
   border-radius: var(--radius-xl);
   background: linear-gradient(180deg, #f9f3e9 0%, #fdf8ee 45%, #fffdf3 100%);
   box-shadow:
     0 4px 10px rgba(56, 38, 24, 0.14),
     inset 0 0 28px rgba(205, 180, 145, 0.18);
-}
-
-.received__icon {
-  position: absolute;
-  top: 32px;
-  right: 44px;
-  width: 100px;
 }
 
 .received__title {
@@ -791,15 +788,15 @@ main:focus {
 
 .received p {
   font-size: var(--fs-lead);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .received__title + p {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .received p + p {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .received .received__strong {
@@ -812,8 +809,48 @@ main:focus {
 }
 
 .received__cta {
-  margin-top: 32px;
-  text-align: center;
+  margin-top: 36px;
+}
+
+.received__cards {
+  margin: 0;
+}
+
+/* tył karty (QR: „Zeskanuj i zobacz, co właśnie otrzymałeś”) na wierzchu, przód za nim */
+.karta__cards--received {
+  width: 100%;
+  max-width: 272px;
+  margin-inline: auto;
+}
+
+.karta__cards--received .karta__card--back {
+  top: 8%;
+  left: 4%;
+  right: auto;
+  z-index: 2;
+  transform: rotate(-6deg);
+}
+
+.karta__cards--received .karta__card--front {
+  top: 13%;
+  left: auto;
+  right: 2%;
+  z-index: 1;
+  transform: rotate(8deg);
+}
+
+@media (hover: hover) {
+  .received__cards:hover .karta__card--back {
+    transform: translate(-7%, -3%) rotate(-10deg);
+  }
+
+  .received__cards:hover .karta__card--front {
+    transform: translate(7%, -1%) rotate(12deg);
+  }
+}
+
+.js .received__cards[data-reveal="cards"]:not(.is-visible) .karta__card {
+  transform: translate(0, 16%) rotate(0deg);
 }
 
 /* ==========================================================================
@@ -1800,7 +1837,7 @@ main:focus {
   }
 
   .hero__card {
-    padding: 48px clamp(32px, 4.5vw, 64px) 56px;
+    padding: 48px clamp(32px, 4.5vw, 64px) clamp(32px, 4.5vw, 64px);
   }
 
   .step__card {
@@ -1929,13 +1966,8 @@ main:focus {
   }
 
   .received {
-    padding: 48px clamp(28px, 4.5vw, 48px) 38px;
-  }
-
-  .received__icon {
-    width: 84px;
-    top: 26px;
-    right: 28px;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 220px);
+    padding: clamp(32px, 4.5vw, 48px);
   }
 
   .cta-card {
@@ -1980,7 +2012,7 @@ main:focus {
   }
 
   .hero__card {
-    padding: 36px 22px 36px;
+    padding: 36px 22px 22px; /* karta „Otrzymałeś” w równej odległości od boków i dołu */
   }
 
   .hero__top {
@@ -2002,17 +2034,19 @@ main:focus {
   }
 
   .received {
+    grid-template-columns: 1fr;
+    gap: 12px;
     margin-top: 32px;
-    padding: 116px 22px 30px;
+    padding: 32px 22px;
     text-align: center;
   }
 
-  .received__icon {
-    left: 50%;
-    right: auto;
-    top: 24px;
-    width: 86px;
-    margin-left: -43px;
+  .received__cards {
+    order: -1;
+  }
+
+  .karta__cards--received {
+    max-width: 210px;
   }
 
   .received__last {

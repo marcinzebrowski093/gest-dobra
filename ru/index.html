@@ -44,8 +44,8 @@
 
   <!-- Fonty hostowane lokalnie (RODO) -->
 
-  <link rel="stylesheet" href="../css/style.css?v=1.5.0">
-  <script src="../js/main.js?v=1.5.0" defer></script>
+  <link rel="stylesheet" href="../css/style.css?v=1.6.0">
+  <script src="../js/main.js?v=1.6.0" defer></script>
 
   <!-- i18n:jsonld – generowane, nie edytuj ręcznie -->
   <script type="application/ld+json">
@@ -183,17 +183,21 @@
           </div>
 
           <div class="received anim-load" data-delay=".55">
-            <div class="received__icon art art--icon" aria-hidden="true">
-              <svg class="art__layer art__hand" viewBox="0 0 123 108" focusable="false"><use href="#gd-hand"/></svg>
-              <svg class="art__layer art__heart" viewBox="0 0 123 108" focusable="false"><use href="#gd-heart"/></svg>
+            <div class="received__text">
+              <h2 class="received__title">Вы получили Gest <span class="text-brown">Dobra.</span></h2>
+              <p>Кто-то сделал для вас доброе дело, не ожидая платы или ответной услуги.</p>
+              <p class="received__strong">Вы ничего не должны.</p>
+              <p class="received__last">Если однажды у вас появится возможность, подарите такую же бескорыстную доброту кому-нибудь ещё.</p>
+              <div class="received__cta">
+                <a class="btn btn--primary" href="#o-idei">Узнать больше</a>
+              </div>
             </div>
-            <h2 class="received__title">Вы получили Gest <span class="text-brown">Dobra.</span></h2>
-            <p>Кто-то сделал для вас доброе дело, не ожидая платы или ответной услуги.</p>
-            <p class="received__strong">Вы ничего не должны.</p>
-            <p class="received__last">Если однажды у вас появится возможность, подарите такую же бескорыстную доброту кому-нибудь ещё.</p>
-            <div class="received__cta">
-              <a class="btn btn--primary" href="#o-idei">Узнать больше</a>
-            </div>
+            <figure class="received__cards" data-reveal="cards">
+              <div class="karta__cards karta__cards--received">
+                <img class="karta__card karta__card--back" src="../assets/img/jak-dziala/karta-tyl.webp" width="326" height="512" alt="Оборотная сторона карточки Gest Dobra: QR-код со ссылкой на gestdobra.pl и краткое объяснение идеи по-польски" loading="lazy" decoding="async">
+                <img class="karta__card karta__card--front" src="../assets/img/jak-dziala/karta-przod.webp" width="326" height="512" alt="Лицевая сторона карточки Gest Dobra: логотип с сердцем над открытой ладонью и надпись по-польски «Можешь оставить её себе или передать дальше…»" loading="lazy" decoding="async">
+              </div>
+            </figure>
           </div>
         </div>
       </div>
