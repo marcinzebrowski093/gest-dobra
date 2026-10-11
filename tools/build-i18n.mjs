@@ -17,7 +17,6 @@
      data-i18n-tpl="{klucz} 1: "      – treść z szablonu
      data-i18n-mode="last-word-brown" – ostatnie słowo w <span class="text-brown">
      data-i18n-mode="brand"           – „Gest Dobra” w <span class="brand"> (krój szeryfowy)
-     data-i18n-mode="logo"            – „Gest Dobra” jako napis z logotypu (SVG ze źródła PL)
    Linki między podstronami zapisuj jako href="./nazwa-pliku-pl.html#kotwica" –
    generator podmieni nazwę pliku na odpowiednik w danym języku.
    ========================================================================== */
@@ -199,16 +198,6 @@ function translateBody(html, lang) {
       inner = `${esc(value.slice(0, i))} <span class="text-brown">${esc(value.slice(i + 1))}</span>`;
     }
     if (/data-i18n-mode="brand"/.test(attrs)) inner = inner.replace(/Gest Dobra[?.!]?/, (b) => `<span class="brand">${b}</span>`);
-    // „logo”: nazwa zastąpiona napisem z logotypu (SVG skopiowane z polskiego źródła), tekst zostaje dla czytników i Google
-    if (/data-i18n-mode="logo"/.test(attrs)) {
-      const mark = m.match(/<span class="brand-mark">[\s\S]*?<\/svg><\/span>/);
-      if (!mark) throw new Error(`${key}: brak napisu z logo w źródle`);
-      if (!/gest dobra/i.test(inner)) throw new Error(`${key} (${lang.code}): w tłumaczeniu brak nazwy „Gest Dobra”`);
-      inner = inner.replace(/gest dobra/i, (name) => mark[0].replace('<span class="visually-hidden">gest dobra</span>', `<span class="visually-hidden">${name}</span>`));
-      // tekst przed napisem w osobnym spanie – jego margines daje większy odstęp przed logo,
-      // ale znika, gdy napis zaczyna nową linię (nie powstaje wcięcie)
-      inner = inner.replace(/^([\s\S]*?\S)\s*(<span class="brand-mark">)/, '<span class="brand-lead">$1</span> $2');
-    }
     return `<${tag}${attrs.replace(' data-i18n="', ' data-i18n-done="')}>${inner}</${tag}>`;
   });
   // szablony
@@ -237,14 +226,11 @@ function prefixPaths(html, prefix) {
   return html;
 }
 
-/* ---------- „Gest Dobra” jako napis z logotypu ----------
-   W treści (nagłówki, akapity, cytaty, podpisy, stopka) nazwa jest zastępowana napisem z logo
-   (symbol #gd-wordmark ze sprite'a). Tekst zostaje dla czytników ekranu, Google i kopiowania.
-   Odmiany („Gestu Dobra”) – tekstem w kroju Bodoni dobranym do logo. Na przyciskach kolory zmieniają się z przyciskiem.
-   Pomijane: <head>, zwykłe linki, nawigacja,
-   okruszki, SVG, teksty ukryte i miejsca, w których napis już jest. Operacja jest idempotentna. */
-const BRAND_MARK = (name) => `<span class="brand-mark"><span class="visually-hidden">${name}</span>` +
-  '<svg class="brand-mark__svg" viewBox="0 0 144.3 28.3" aria-hidden="true" focusable="false"><use href="#gd-wordmark"/></svg></span>';
+/* ---------- „Gest Dobra” w kroju i kolorach logo ----------
+   W treści (nagłówki, akapity, cytaty, podpisy, przyciski, stopka) nazwa – także odmieniona, np. „Gestu Dobra” –
+   jest owijana w <span class="brand-name">: zwykły tekst w kroju Bodoni Moda (opsz 18) i kolorach logo
+   („gest” zielone, „dobra” brązowe). Wiersze łamią się jak w zwykłym tekście.
+   Pomijane: <head>, zwykłe linki, nawigacja, okruszki, SVG i teksty ukryte. Operacja jest idempotentna. */
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 const CONTENT = new Set(['h1', 'h2', 'h3', 'h4', 'p', 'li', 'dt', 'dd', 'figcaption', 'blockquote']);
 const SKIP_TAGS = new Set(['nav', 'svg', 'script', 'style', 'title', 'head']);
@@ -269,16 +255,14 @@ function brandify(html) {
       stack.push({ n, cls });
       continue;
     }
-    if (!/\bGest[a-ząćęłńóśźż]* Dobr/.test(t)) continue;
+    if (!/\b[Gg]est[a-ząćęłńóśźż]* [Dd]obr/.test(t)) continue;
     const inBtn = stack.some((s) => /\bbtn\b/.test(s.cls));
     const skip = stack.some((s) => SKIP_TAGS.has(s.n) || (s.n === 'a' && !/\bbtn\b/.test(s.cls)) ||
-      /\b(visually-hidden|brand-mark|brand-text|crumbs|lang|svg-sprite)\b/.test(s.cls));
+      /\b(visually-hidden|brand-name|crumbs|lang|svg-sprite)\b/.test(s.cls));
     if (skip || !(inBtn || stack.some((s) => CONTENT.has(s.n)))) continue;
-    // forma podstawowa – napis z logo (SVG); odmiany (np. „Gestu Dobra”) – krój Bodoni dobrany do logo, kolory logo
-    parts[i] = t.replace(/\b(Gest[a-ząćęłńóśźż]*) (Dobr[a-ząćęłńóśźż]*)/g, (m, a, b) => {
+    parts[i] = t.replace(/\b([Gg]est[a-ząćęłńóśźż]*) ([Dd]obr[a-ząćęłńóśźż]*)/g, (m, a, b) => {
       count++;
-      return m === 'Gest Dobra' ? BRAND_MARK(m)
-        : `<span class="brand-text"><span class="brand-text__g">${a}</span> <span class="brand-text__d">${b}</span></span>`;
+      return `<span class="brand-name"><span class="brand-name__g">${a}</span> <span class="brand-name__d">${b}</span></span>`;
     });
   }
   return { html: head + parts.join(''), count };
@@ -293,7 +277,7 @@ for (const page of PAGES) {
   source = replaceBlock(source, 'jsonld', jsonldBlock(page, PL, source));
   source = replaceBlock(source, 'lang', langBlock(page, PL));
   const plBrand = brandify(source); source = plBrand.html;
-  console.log(`  ${page.src}: napis z logo w miejsce „Gest Dobra” – nowych ${plBrand.count}`);
+  console.log(`  ${page.src}: nazwa w kroju logo – nowych ${plBrand.count}`);
   write(page.src, source);
 
   for (const lang of LANGS.slice(1)) {

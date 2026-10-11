@@ -52,7 +52,7 @@ Przy `prefers-reduced-motion` wszystkie animacje są wyłączane automatycznie.
 **Skala.** Rozmiary tekstu to tokeny `--fs-*` w `:root` (w `rem`, płynnie przez `clamp()`). Zmiana jednego tokenu zmienia dany rozmiar w całym serwisie.
 
 **Fonty.**
-- Treść: Inter (300–700). Nagłówki: Brygada 1918 (400–700). Numeracja 01, 02…: Bodoni Moda (`bodoni-moda-cyfry.woff2` zawiera wyłącznie cyfry 0–9, token `--font-numerals`). „gest dobra” w nagłówku podstrony to napis z logotypu wstawiony jako SVG (`.brand-mark`, tryb `data-i18n-mode="logo"` w generatorze wersji językowych).
+- Treść: Inter (300–700). Nagłówki: Brygada 1918 (400–700). Numeracja 01, 02…: Bodoni Moda (`bodoni-moda-cyfry.woff2` zawiera wyłącznie cyfry 0–9, token `--font-numerals`).
 - Każdy krój ma osobne pliki dla łaciny z polskimi znakami (`*-pl`), greki (`*-el`) i cyrylicy (`*-ru`). Przeglądarka pobiera je przez `unicode-range` tylko wtedy, gdy na stronie są takie znaki.
 - Grubość nagłówków ustawia token `--serif-weight` (600).
 - Gdyby zabrakło jakiegoś znaku, wygeneruj subset ponownie z pełnych plików Google Fonts:
@@ -86,7 +86,7 @@ Skrypt odświeża w `index.html` sekcję `<head>` (title, opisy, canonical, href
 - **Domena:** ustaw ją w stałej `SITE` na górze `tools/build-i18n.mjs`.
 - **Obrazki OG** (`assets/img/og-image-*.jpg`) są wygenerowane z tekstów hero. Przy zmianie hasła trzeba je odświeżyć.
 
-**Nazwa „Gest Dobra” jako napis z logo.** Generator (`brandify` w `tools/build-i18n.mjs`) zamienia w treści każde „Gest Dobra” na napis z logotypu (`<symbol id="gd-wordmark">` w sprite na górze strony). Wystarczy pisać zwykły tekst „Gest Dobra” i uruchomić generator. Odmienione formy (np. „Gestu Dobra”) są zapisywane krojem Bodoni Moda dobranym do logo (`bodoni-moda-logo.woff2`, klasa `.brand-text`). Napis działa też na przyciskach (`.btn`) – po najechaniu zmienia kolor razem z przyciskiem. Zwykłe linki, menu i okruszki zostają zwykłym tekstem. Wielkość napisu ustawia zmienna `--bm-h` w CSS.
+**Nazwa „Gest Dobra” w kroju i kolorach logo.** Generator (`brandify` w `tools/build-i18n.mjs`) owija w treści każde „Gest Dobra” (także odmiany, np. „Gestu Dobra”) w `<span class="brand-name">`: tekst w kroju Bodoni Moda opsz 18 (`bodoni-moda-litery.woff2`), małymi literami, „gest” zielone, „dobra” brązowe. Wystarczy pisać zwykły tekst i uruchomić generator. Działa też na przyciskach (po najechaniu kolor zmienia się z przyciskiem). Zwykłe linki, menu i okruszki zostają bez zmian.
 
 ## Wsparcie przeglądarek
 Aktualne Chrome, Edge, Firefox, Safari (macOS/iOS 16+), Samsung Internet. Bez JavaScriptu cała treść jest widoczna, tylko bez animacji.

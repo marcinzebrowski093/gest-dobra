@@ -52,7 +52,7 @@ Testy uruchamiano na serwerze lokalnym odwzorowującym nagłówki produkcyjne z 
 - `font-display: swap`, preload obu plików i fonty zastępcze o dopasowanych metrykach (`size-adjust`, `ascent-override`). Tekst nie „skacze” po doładowaniu fontu (CLS = 0).
 - **Od wersji 1.4 nagłówki są w kroju Brygada 1918** (wybór klienta spośród 5 propozycji). To polski krój odtworzony na 100-lecie niepodległości z matryc dawnej Państwowej Odlewni Czcionek. Ma pełną grekę i cyrylicę, więc nagłówki wyglądają identycznie we wszystkich 4 językach (wcześniej EL i RU dostawały zastępczy Noto Serif Display). Pliki: 19 KB (łacina), 8 KB (greka), 12 KB (cyrylica).
 - Numeracja 01, 02… zostaje w Bodoni Moda. Plik zawiera wyłącznie cyfry, więc waży 2,7 KB zamiast 22 KB.
-- Od wersji 1.7 nagłówek podstrony brzmi „Jak działa gest dobra” („Jak działa” w Brygadzie 1918), a „gest dobra” to napis z logotypu (te same kształty liter i kolory: „gest” zielone, „dobra” brązowe), wstawiony jako SVG i wyrównany do linii bazowej tekstu. Czytniki ekranu i Google odczytują pełny tekst nagłówka. W wersjach EN, EL i RU nazwa w nagłówku też jest napisem z logo.
+- Od wersji 1.9 nazwa „Gest Dobra” w treści (nagłówki, akapity, cytaty, przyciski, stopka; także odmiana „Gestu Dobra”) jest zwykłym tekstem w kroju Bodoni Moda (rozmiar optyczny 18), zapisanym małymi literami w kolorach logo: „gest” zielone, „dobra” brązowe. Litery Bodoni to osobny plik (10 KB).
 - Fonty greki i cyrylicy ładują się tylko na stronach, które zawierają te znaki (`unicode-range`). Na stronach EL i RU z wyprzedzeniem (preload) pobierany jest tylko font tekstu w danym alfabecie.
 - Licencje OFL dołączone w `assets/fonts/`.
 
@@ -273,6 +273,7 @@ gest dobra/
 | 1.7.3 | 11.10.2026 | „Przyjmij dobro.” (nagłówek strony głównej) w kroju Brygada 1918, we wszystkich językach; na stronach głównych EL/RU wcześniejsze pobieranie fontów nagłówka (bez przeskoku układu) |
 | 1.8.0 | 11.10.2026 | Nazwa „Gest Dobra” w treści wszystkich stron i języków jako napis z logotypu (kształty i kolory logo): nagłówki, wstępy, akapity, cytaty, etykiety kart, stopka. Pomijane przyciski, menu, okruszki i meta tagi. Napis zdefiniowany raz w SVG (`<symbol>`) i wielokrotnie użyty; tekst zostaje dla czytników ekranu i Google |
 | 1.8.1 | 11.10.2026 | Odmiana „Gestu Dobra” w krojem Bodoni Moda dobranym do napisu z logo (rozmiar optyczny 96, rozstaw jak w logo, kolory logo), np. „Przykłady gestu dobra”; napis z logo także na przyciskach „Zobacz, jak działa gest dobra” – po najechaniu zmienia kolor na biały razem z przyciskiem; kolory napisu ustawiane klasami CSS (zgodnie z CSP) |
+| 1.9.0 | 11.10.2026 | Nazwa „Gest Dobra” (także „Gestu Dobra”) w treści i na przyciskach jako zwykły tekst w kroju Bodoni Moda (opsz 18) w kolorach logo – zamiast grafiki z logo; wiersze łamią się naturalnie (nagłówek podstrony znów w jednej linii na komputerze); usunięte grafiki napisu i plik Bodoni opsz 96 |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

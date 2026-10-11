@@ -65,13 +65,14 @@
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
-/* Bodoni Moda (rozmiar optyczny 18) – wyłącznie cyfry do numeracji 01, 02… */
+/* Bodoni Moda (rozmiar optyczny 18) – cyfry do numeracji 01, 02… */
 @font-face {
-  font-family: "Bodoni Moda Logo"; /* opsz 96, wght 400 – małe litery dobrane do napisu z logo (odmiany: „gestu dobra”) */
-  src: url("../assets/fonts/bodoni-moda-logo.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Bodoni Moda"; /* opsz 18 – litery do nazwy „Gest Dobra” w treści */
+  src: url("../assets/fonts/bodoni-moda-litery.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0041-005A, U+0061-007A, U+00D3, U+00F3, U+0104-0107, U+0118-0119, U+0141-0144, U+015A-015B, U+0179-017C;
 }
 
 @font-face {
@@ -1214,70 +1215,43 @@ main:focus {
 }
 
 .hero__title--sub {
-  max-width: 12em;
   font-family: var(--font-serif); /* "Brygada 1918", "Brygada Fallback", Georgia, serif */
   font-weight: var(--serif-weight);
   font-size: var(--fs-h1);
   text-wrap: balance;
 }
 
-/* „gest dobra” jako napis z logotypu (symbol #gd-wordmark).
-   --bm-h: wysokość napisu względem tekstu – dobrana tak, by wysokość małych liter logo
-   odpowiadała otaczającemu krojowi; vertical-align stawia linię bazową napisu na linii tekstu. */
-.brand-mark {
-  --bm-h: 1.2em;
-  white-space: nowrap;
-}
-
-/* kolory liter napisu (klasy w symbolu #gd-wordmark; zmienne pozwalają je zmienić np. na przycisku) */
-.wm-g {
-  fill: var(--bm-g, #6e7500);
-}
-
-.wm-d {
-  fill: var(--bm-d, #8c5a3c);
-}
-
-.brand-mark__svg {
-  display: inline-block;
-  width: calc(var(--bm-h) * 144.3 / 28.3);
-  height: var(--bm-h);
-  max-width: none;
-  margin-inline: 0.04em;
-  vertical-align: calc(var(--bm-h) * -0.258);
-  overflow: visible;
-}
-
-:is(h2, h3, .section__title, .received__title, .cta-card__title) :is(.brand-mark, .brand-text) {
-  --bm-h: 1.14em;
-}
-
-/* odmiany nazwy („Gestu Dobra”) – ten sam wygląd co napis z logo, ale jako tekst */
-.brand-text {
-  --bm-h: 1.2em;
-  font-family: "Bodoni Moda Logo", "Bodoni Moda", Didot, Georgia, serif;
-  font-size: var(--bm-h);
-  font-weight: 400;
+/* „Gest Dobra” w treści – tekst w kroju Bodoni Moda (opsz 18) i kolorach logo, małymi literami jak w logo.
+   Rozmiar 1.1em wyrównuje wysokość małych liter do otaczającego kroju; łamanie wierszy jak w zwykłym tekście. */
+.brand-name {
+  font-family: "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+  font-size: 1.1em;
+  font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.03em;
-  word-spacing: -0.08em;
+  letter-spacing: 0.02em;
+  word-spacing: -0.04em;
   text-transform: lowercase;
-  white-space: nowrap;
 }
 
-.brand-text__g {
+:is(h1, h2, h3, .section__title, .received__title, .cta-card__title) .brand-name {
+  font-size: 1.04em;
+  font-weight: 600;
+}
+
+/* przycisk to element flex – spacje przy nazwie są obcinane, więc odstęp dajemy marginesem */
+.btn .brand-name {
+  margin-inline: 0.28em;
+}
+
+.brand-name__g {
   color: var(--bm-g, #6e7500);
 }
 
-.brand-text__d {
+.brand-name__d {
   color: var(--bm-d, #8c5a3c);
 }
 
-/* przyciski: napis w kolorach logo, po najechaniu (tło zielone) – biały jak tekst przycisku */
-.btn :is(.brand-mark__svg, .brand-text) {
-  margin-inline: 0.22em;
-}
-
+/* przyciski: nazwa w kolorach logo, po najechaniu (tło zielone) – biała jak tekst przycisku */
 .btn--primary {
   --bm-g: currentColor;
   --bm-d: currentColor;
@@ -1293,17 +1267,6 @@ main:focus {
     --bm-g: #6e7500;
     --bm-d: #8c5a3c;
   }
-}
-
-/* nagłówek podstrony: większy napis, z odstępem przed nim */
-.hero__title--sub .brand-mark {
-  --bm-h: 1.3em;
-  display: inline-block;
-  margin-top: 0.14em;
-}
-
-.brand-lead {
-  margin-right: 0.16em;
 }
 
 /* duża karta-panel (jak karta hero) */
