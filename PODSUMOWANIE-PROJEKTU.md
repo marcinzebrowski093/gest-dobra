@@ -268,6 +268,7 @@ gest dobra/
 | 1.6.1 | 11.10.2026 | Flaga UK w przełączniku języka przerysowana w proporcjach 3:2 – wypełnia pole jak pozostałe flagi (wcześniej 2:1 z pustymi paskami) |
 | 1.6.3 | 11.10.2026 | Przywrócone poprzednie położenie gałązek (zmiana 1.6.2 cofnięta – po mocniejszym schowaniu gałązki wyglądały jak bez łodygi). Docelowo: nowa grafika gałązek z dłuższą łodygą wychodzącą poza krawędź pliku |
 | 1.7.0 | 11.10.2026 | Nagłówek podstrony „Jak działa gest dobra”: „gest dobra” jako napis z logotypu (kształty i kolory logo), we wszystkich językach; usunięty niepotrzebny już plik liter Bodoni |
+| 1.7.1 | 11.10.2026 | Większy odstęp przed napisem „gest dobra” w nagłówku podstrony: w tej samej linii (margines po tekście) i po złamaniu linii (oddech od linii wyżej), bez wcięcia na początku nowej linii |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

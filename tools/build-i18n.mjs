@@ -203,6 +203,9 @@ function translateBody(html, lang) {
       if (!mark) throw new Error(`${key}: brak napisu z logo w źródle`);
       if (!/gest dobra/i.test(inner)) throw new Error(`${key} (${lang.code}): w tłumaczeniu brak nazwy „Gest Dobra”`);
       inner = inner.replace(/gest dobra/i, (name) => mark[0].replace('<span class="visually-hidden">gest dobra</span>', `<span class="visually-hidden">${name}</span>`));
+      // tekst przed napisem w osobnym spanie – jego margines daje większy odstęp przed logo,
+      // ale znika, gdy napis zaczyna nową linię (nie powstaje wcięcie)
+      inner = inner.replace(/^([\s\S]*?\S)\s*(<span class="brand-mark">)/, '<span class="brand-lead">$1</span> $2');
     }
     return `<${tag}${attrs.replace(' data-i18n="', ' data-i18n-done="')}>${inner}</${tag}>`;
   });

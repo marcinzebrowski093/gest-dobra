@@ -1212,7 +1212,14 @@ main:focus {
 
 /* „gest dobra” w nagłówku podstrony – napis z logotypu (te same kształty i kolory co w logo).
    Wysokość 1.3em; vertical-align ustawia linię bazową napisu na linii bazowej tekstu. */
+/* odstęp przed napisem: w tej samej linii – margines tekstu przed nim; po złamaniu linii – margines u góry */
+.brand-lead {
+  margin-right: 0.16em;
+}
+
 .brand-mark {
+  display: inline-block;
+  margin-top: 0.14em;
   white-space: nowrap;
 }
 
