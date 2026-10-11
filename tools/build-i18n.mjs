@@ -96,8 +96,8 @@ function headBlock(page, lang) {
     `  <meta name="twitter:card" content="summary_large_image">`,
     // font tekstu w alfabecie danego języka (greka / cyrylica) – reszta ładuje się, gdy jest potrzebna
     ...(lang.fonts || []).map((f) => `  <link rel="preload" href="assets/fonts/${f}" as="font" type="font/woff2" crossorigin>`),
-    // podstrona: nagłówek na pierwszym ekranie jest w Brygadzie – font alfabetu musi być gotowy od razu (brak przesunięć układu)
-    ...(page.id === 'how' && lang.headingFont ? [`  <link rel="preload" href="assets/fonts/${lang.headingFont}" as="font" type="font/woff2" crossorigin>`] : []),
+    // nagłówek na pierwszym ekranie jest w Brygadzie – font alfabetu musi być gotowy od razu (brak przesunięć układu)
+    ...(lang.headingFont ? [`  <link rel="preload" href="assets/fonts/${lang.headingFont}" as="font" type="font/woff2" crossorigin>`] : []),
   ];
   return lines.join('\n') + '\n';
 }
@@ -258,10 +258,8 @@ for (const page of PAGES) {
     html = html.replace(/<html lang="[^"]*"/, `<html lang="${lang.html}"`);
     // w EL/RU nagłówki są w innym alfabecie – preload łacińskiej Brygady tylko spowalniałby pierwszy ekran
     // to samo dla łacińskiego Intera – na tych stronach łacina to tylko pojedyncze słowa (np. „Gest Dobra”)
-    // (na podstronie nagłówek Brygadą zawiera też łacińskie znaki – spacje, interpunkcję – więc łacińska Brygada zostaje)
-    if (lang.fonts) html = html.replace(page.id === 'how'
-      ? /\n\s*<link rel="preload" href="assets\/fonts\/inter-var-pl\.woff2"[^>]*>/g
-      : /\n\s*<link rel="preload" href="assets\/fonts\/(brygada-1918-var-pl|inter-var-pl)\.woff2"[^>]*>/g, '');
+    // (nagłówek Brygadą zawiera też łacińskie znaki – spacje, interpunkcję – więc łacińska Brygada zostaje)
+    if (lang.fonts) html = html.replace(/\n\s*<link rel="preload" href="assets\/fonts\/inter-var-pl\.woff2"[^>]*>/g, '');
     html = stripMarkers(html);
     html = relinkPages(html, lang);
     html = prefixPaths(html, '../'.repeat(file.split('/').length - 1));

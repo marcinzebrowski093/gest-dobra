@@ -270,6 +270,7 @@ gest dobra/
 | 1.7.0 | 11.10.2026 | Nagłówek podstrony „Jak działa gest dobra”: „gest dobra” jako napis z logotypu (kształty i kolory logo), we wszystkich językach; usunięty niepotrzebny już plik liter Bodoni |
 | 1.7.1 | 11.10.2026 | Większy odstęp przed napisem „gest dobra” w nagłówku podstrony: w tej samej linii (margines po tekście) i po złamaniu linii (oddech od linii wyżej), bez wcięcia na początku nowej linii |
 | 1.7.2 | 11.10.2026 | „Jak działa” w nagłówku podstrony w kroju Brygada 1918 (jak pozostałe nagłówki), we wszystkich językach; na podstronach EL/RU wcześniejsze pobieranie fontów nagłówka (greka/cyrylica i łacina), dzięki czemu nagłówek nie przeskakuje przy ładowaniu (CLS 0,001) |
+| 1.7.3 | 11.10.2026 | „Przyjmij dobro.” (nagłówek strony głównej) w kroju Brygada 1918, we wszystkich językach; na stronach głównych EL/RU wcześniejsze pobieranie fontów nagłówka (bez przeskoku układu) |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

@@ -671,8 +671,9 @@ main:focus {
 }
 
 .hero__title {
+  font-family: var(--font-serif); /* "Brygada 1918", "Brygada Fallback", Georgia, serif */
   font-size: var(--fs-h1);
-  font-weight: 600;
+  font-weight: var(--serif-weight);
   line-height: 1.15;
   color: var(--c-green);
 }
