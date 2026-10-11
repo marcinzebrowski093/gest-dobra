@@ -1125,12 +1125,14 @@ main:focus {
   width: 100%;
 }
 
+/* gałązki wysunięte za krawędź ekranu – ścięty koniec łodygi (ok. 79% / 21% szerokości pliku)
+   jest zawsze poza widokiem, także podczas kołysania */
 .leaf--right {
-  right: calc(var(--leaf-w) * -0.21);
+  right: calc(var(--leaf-w) * -0.33);
 }
 
 .leaf--left {
-  left: calc(var(--leaf-w) * -0.205);
+  left: calc(var(--leaf-w) * -0.33);
 }
 
 .leaf--right img {
