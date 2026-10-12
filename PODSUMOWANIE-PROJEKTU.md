@@ -214,7 +214,7 @@ Od 28.06.2025 w UE obowiązuje EAA (w Polsce ustawa o zapewnianiu spełniania wy
 ---
 
 ## 4. Do zrobienia przed publikacją
-- [ ] **Domena**: zamienić `https://example.com/` na docelowy adres (prawdopodobnie `https://gestdobra.pl/`, gdzie działa obecna strona) w `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml` i `robots.txt`.
+- [x] **Domena** `https://gestdobra.pl/` ustawiona (12.10.2026).
 - [ ] **Teksty tłumaczeń do przejrzenia przez native speakerów** (EL, RU): podpisy trzech scen w sekcji o karcie, opisy kart i kilka etykiet interfejsu to nowe tłumaczenia. Reszta pochodzi z obecnej strony.
 - [ ] **Karta w wersjach EN/EL/RU**: zdjęcia karty pokazują fizyczną, polską kartę (napisy po polsku). Jeśli powstaną karty w innych językach, wystarczy podmienić pliki `assets/img/jak-dziala/karta-*.webp`.
 - [ ] **Grafika „dobro z obowiązkiem / dobro z wolnością”** ma polskie napisy wpisane w obraz (tak jak na obecnej stronie). Dla pełnej lokalizacji potrzebna byłaby wersja bez napisów.
@@ -275,6 +275,7 @@ gest dobra/
 | 1.8.1 | 11.10.2026 | Odmiana „Gestu Dobra” w krojem Bodoni Moda dobranym do napisu z logo (rozmiar optyczny 96, rozstaw jak w logo, kolory logo), np. „Przykłady gestu dobra”; napis z logo także na przyciskach „Zobacz, jak działa gest dobra” – po najechaniu zmienia kolor na biały razem z przyciskiem; kolory napisu ustawiane klasami CSS (zgodnie z CSP) |
 | 1.9.0 | 11.10.2026 | Nazwa „Gest Dobra” (także „Gestu Dobra”) w treści i na przyciskach jako zwykły tekst w kroju Bodoni Moda (opsz 18) w kolorach logo – zamiast grafiki z logo; wiersze łamią się naturalnie (nagłówek podstrony znów w jednej linii na komputerze); usunięte grafiki napisu i plik Bodoni opsz 96 |
 | 1.9.1 | 11.10.2026 | Przyciski: kolor nazwy „gest dobra” przy najechaniu zmienia się płynnie, w tym samym tempie co tło i tekst przycisku (wcześniej przeskakiwał od razu na biały) |
+| 2.0.0 | 12.10.2026 | Publikacja na gestdobra.pl: docelowa domena w adresach kanonicznych, hreflang, danych strukturalnych, sitemap i robots.txt; .htaccess scalony z dotychczasową konfiguracją serwera (przekierowania na https://gestdobra.pl, blok PHP z cPanelu); kopia zapasowa starej strony w `_design/_backup-serwer-2026-10-12/` |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.

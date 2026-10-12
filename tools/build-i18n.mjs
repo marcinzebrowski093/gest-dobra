@@ -26,8 +26,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-// TODO: docelowa domena (np. https://gestdobra.pl/) – zmień i uruchom skrypt ponownie
-const SITE = 'https://example.com/';
+// docelowa domena – po zmianie uruchom skrypt ponownie
+const SITE = 'https://gestdobra.pl/';
 
 const LANGS = [
   { code: 'pl', dir: '', html: 'pl', hreflang: 'pl', og: 'pl_PL', ld: 'pl-PL', label: 'PL', name: 'Polski', flag: 'pl', ogImage: 'og-image.jpg' },

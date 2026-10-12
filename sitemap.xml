@@ -2,75 +2,75 @@
 <!-- Plik wygenerowany przez tools/build-i18n.mjs. Domena: stała SITE w tym skrypcie. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/"/>
+    <loc>https://gestdobra.pl/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/"/>
   </url>
   <url>
-    <loc>https://example.com/en/</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/"/>
+    <loc>https://gestdobra.pl/en/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/"/>
   </url>
   <url>
-    <loc>https://example.com/el/</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/"/>
+    <loc>https://gestdobra.pl/el/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/"/>
   </url>
   <url>
-    <loc>https://example.com/ru/</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/"/>
+    <loc>https://gestdobra.pl/ru/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/"/>
   </url>
   <url>
-    <loc>https://example.com/chce-zrozumiec-wiecej.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <loc>https://gestdobra.pl/chce-zrozumiec-wiecej.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
   </url>
   <url>
-    <loc>https://example.com/en/how-it-works.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <loc>https://gestdobra.pl/en/how-it-works.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
   </url>
   <url>
-    <loc>https://example.com/el/pos-leitourgei.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <loc>https://gestdobra.pl/el/pos-leitourgei.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
   </url>
   <url>
-    <loc>https://example.com/ru/kak-eto-rabotaet.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://example.com/chce-zrozumiec-wiecej.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/how-it-works.html"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://example.com/el/pos-leitourgei.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://example.com/ru/kak-eto-rabotaet.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/chce-zrozumiec-wiecej.html"/>
+    <loc>https://gestdobra.pl/ru/kak-eto-rabotaet.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gestdobra.pl/en/how-it-works.html"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://gestdobra.pl/el/pos-leitourgei.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gestdobra.pl/ru/kak-eto-rabotaet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gestdobra.pl/chce-zrozumiec-wiecej.html"/>
   </url>
 </urlset>

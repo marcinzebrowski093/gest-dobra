@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_design/
 
-# TODO: podmień domenę
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://gestdobra.pl/sitemap.xml
