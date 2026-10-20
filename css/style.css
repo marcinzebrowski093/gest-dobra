@@ -737,29 +737,23 @@ main:focus {
 }
 
 /* gałązka wyrasta od nasady łodygi, potem kołysze się na wietrze */
-/* gałązka: łodyga należy do okręgu (stoi w miejscu), więc animowane są pojedyncze listki –
-   każdy obraca się wokół punktu, w którym jego ogonek łączy się z łodygą (współrzędne viewBox 466×437).
-   Listki wyrastają kolejno od dołu – w chwili, gdy rysowany okrąg (łodyga) dochodzi do ich miejsca –
-   a potem delikatnie drżą, każdy w swoim tempie. */
+/* Listki: wyrastają kolejno od dołu, gdy rysowany okrąg dochodzi do ich miejsca,
+   a potem kołyszą się delikatnie wokół punktu na łodydze – wszystkie w tym samym
+   tempie, z małym przesunięciem od dołu do góry, jak w lekkim powiewie. */
 .art--hero .art__branch .leaf {
   transform-box: view-box;
   animation:
     leaf-grow 0.9s var(--ease-out) var(--lg, 1s) both,
-    leaf-flutter var(--lf, 4s) var(--ease-soft) var(--lfd, 2.4s) infinite alternate;
+    leaf-flutter 6s linear var(--lfd, 3.2s) infinite;
 }
 
-.art--hero .art__branch .lf1 { transform-origin: 395px 90px; --lg: 2.25s; --lf: 4.2s; --lfd: 3.2s; }
-.art--hero .art__branch .lf2 { transform-origin: 414px 119px; --lg: 2.15s; --lf: 3.6s; --lfd: 3.6s; }
-.art--hero .art__branch .lf3 { transform-origin: 418px 134px; --lg: 2.05s; --lf: 4.6s; --lfd: 3.3s; }
-.art--hero .art__branch .lf4 { transform-origin: 428px 156px; --lg: 1.95s; --lf: 3.9s; --lfd: 3.8s; }
-.art--hero .art__branch .lf5 { transform-origin: 432px 178px; --lg: 1.85s; --lf: 4.4s; --lfd: 3.4s; }
-.art--hero .art__branch .lf6 { transform-origin: 437px 206px; --lg: 1.75s; --lf: 3.7s; --lfd: 3.9s; }
-.art--hero .art__branch .lf7 { transform-origin: 435px 228px; --lg: 1.65s; --lf: 4.1s; --lfd: 3.5s; }
-
-/* listki po lewej stronie łodygi drżą w przeciwnym kierunku niż po prawej */
-.art--hero .art__branch :is(.lf2, .lf4, .lf6) {
-  animation-direction: normal, alternate-reverse;
-}
+.art--hero .art__branch .lf1 { transform-origin: 395px 90px; --lg: 2.25s; --lfd: 4.4s; }
+.art--hero .art__branch .lf2 { transform-origin: 414px 119px; --lg: 2.15s; --lfd: 4.2s; }
+.art--hero .art__branch .lf3 { transform-origin: 418px 134px; --lg: 2.05s; --lfd: 4s; }
+.art--hero .art__branch .lf4 { transform-origin: 428px 156px; --lg: 1.95s; --lfd: 3.8s; }
+.art--hero .art__branch .lf5 { transform-origin: 432px 178px; --lg: 1.85s; --lfd: 3.6s; }
+.art--hero .art__branch .lf6 { transform-origin: 437px 206px; --lg: 1.75s; --lfd: 3.4s; }
+.art--hero .art__branch .lf7 { transform-origin: 435px 228px; --lg: 1.65s; --lfd: 3.2s; }
 
 .art--hero .art__hand {
   animation: hand-in 1.1s var(--ease-out) 0.55s both;
@@ -1675,9 +1669,11 @@ main:focus {
   }
 }
 
+/* pełna sinusoida zaczynająca się od 0° – płynny ruch bez skoku na starcie pętli */
 @keyframes leaf-flutter {
-  from { rotate: -3deg; }
-  to { rotate: 3.5deg; }
+  0%, 100% { rotate: 0deg; animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1); }
+  25% { rotate: 1.8deg; animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1); }
+  75% { rotate: -1.8deg; animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0); }
 }
 
 @keyframes hand-in {
