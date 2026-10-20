@@ -737,11 +737,28 @@ main:focus {
 }
 
 /* gałązka wyrasta od nasady łodygi, potem kołysze się na wietrze */
-.art--hero .art__branch {
-  transform-origin: 93.8% 52.4%;
+/* gałązka: łodyga należy do okręgu (stoi w miejscu), więc animowane są pojedyncze listki –
+   każdy obraca się wokół punktu, w którym jego ogonek łączy się z łodygą (współrzędne viewBox 466×437).
+   Listki wyrastają kolejno od dołu – w chwili, gdy rysowany okrąg (łodyga) dochodzi do ich miejsca –
+   a potem delikatnie drżą, każdy w swoim tempie. */
+.art--hero .art__branch .leaf {
+  transform-box: view-box;
   animation:
-    branch-grow 1.5s var(--ease-out) 1s both,
-    branch-sway 6s var(--ease-soft) 2.5s infinite alternate;
+    leaf-grow 0.9s var(--ease-out) var(--lg, 1s) both,
+    leaf-flutter var(--lf, 4s) var(--ease-soft) var(--lfd, 2.4s) infinite alternate;
+}
+
+.art--hero .art__branch .lf1 { transform-origin: 395px 90px; --lg: 2.25s; --lf: 4.2s; --lfd: 3.2s; }
+.art--hero .art__branch .lf2 { transform-origin: 414px 119px; --lg: 2.15s; --lf: 3.6s; --lfd: 3.6s; }
+.art--hero .art__branch .lf3 { transform-origin: 418px 134px; --lg: 2.05s; --lf: 4.6s; --lfd: 3.3s; }
+.art--hero .art__branch .lf4 { transform-origin: 428px 156px; --lg: 1.95s; --lf: 3.9s; --lfd: 3.8s; }
+.art--hero .art__branch .lf5 { transform-origin: 432px 178px; --lg: 1.85s; --lf: 4.4s; --lfd: 3.4s; }
+.art--hero .art__branch .lf6 { transform-origin: 437px 206px; --lg: 1.75s; --lf: 3.7s; --lfd: 3.9s; }
+.art--hero .art__branch .lf7 { transform-origin: 435px 228px; --lg: 1.65s; --lf: 4.1s; --lfd: 3.5s; }
+
+/* listki po lewej stronie łodygi drżą w przeciwnym kierunku niż po prawej */
+.art--hero .art__branch :is(.lf2, .lf4, .lf6) {
+  animation-direction: normal, alternate-reverse;
 }
 
 .art--hero .art__hand {
@@ -1651,16 +1668,16 @@ main:focus {
   to { --ring: 360deg; }
 }
 
-@keyframes branch-grow {
+@keyframes leaf-grow {
   from {
     opacity: 0;
-    scale: 0.35;
+    scale: 0.2;
   }
 }
 
-@keyframes branch-sway {
-  from { rotate: -1.5deg; }
-  to { rotate: 2.5deg; }
+@keyframes leaf-flutter {
+  from { rotate: -3deg; }
+  to { rotate: 3.5deg; }
 }
 
 @keyframes hand-in {

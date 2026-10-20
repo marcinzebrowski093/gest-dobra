@@ -276,6 +276,7 @@ gest dobra/
 | 1.9.0 | 11.10.2026 | Nazwa „Gest Dobra” (także „Gestu Dobra”) w treści i na przyciskach jako zwykły tekst w kroju Bodoni Moda (opsz 18) w kolorach logo – zamiast grafiki z logo; wiersze łamią się naturalnie (nagłówek podstrony znów w jednej linii na komputerze); usunięte grafiki napisu i plik Bodoni opsz 96 |
 | 1.9.1 | 11.10.2026 | Przyciski: kolor nazwy „gest dobra” przy najechaniu zmienia się płynnie, w tym samym tempie co tło i tekst przycisku (wcześniej przeskakiwał od razu na biały) |
 | 2.0.0 | 12.10.2026 | Publikacja na gestdobra.pl: docelowa domena w adresach kanonicznych, hreflang, danych strukturalnych, sitemap i robots.txt; .htaccess scalony z dotychczasową konfiguracją serwera (przekierowania na https://gestdobra.pl, blok PHP z cPanelu); kopia zapasowa starej strony w `_design/_backup-serwer-2026-10-12/` |
+| 2.0.1 | 20.10.2026 | Gałązka w ilustracji: listki nie odrywają się już od łodygi – zamiast kołysania całej gałązki (łodyga jest częścią okręgu i stoi w miejscu) każdy listek z ogonkiem drży wokół swojego punktu na łodydze; listki wyrastają kolejno od dołu, gdy rysowany okrąg dochodzi do ich miejsca |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
