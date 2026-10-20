@@ -747,13 +747,13 @@ main:focus {
     leaf-flutter 6s cubic-bezier(0.37, 0, 0.63, 1) var(--lfd, 3.2s) infinite;
 }
 
-.art--hero .art__branch .lf1 { transform-origin: 395px 90px; --lg: 2.25s; --lfd: 4.4s; }
-.art--hero .art__branch .lf2 { transform-origin: 414px 119px; --lg: 2.15s; --lfd: 4.2s; }
-.art--hero .art__branch .lf3 { transform-origin: 418px 134px; --lg: 2.05s; --lfd: 4s; }
-.art--hero .art__branch .lf4 { transform-origin: 428px 156px; --lg: 1.95s; --lfd: 3.8s; }
-.art--hero .art__branch .lf5 { transform-origin: 432px 178px; --lg: 1.85s; --lfd: 3.6s; }
-.art--hero .art__branch .lf6 { transform-origin: 437px 206px; --lg: 1.75s; --lfd: 3.4s; }
-.art--hero .art__branch .lf7 { transform-origin: 435px 228px; --lg: 1.65s; --lfd: 3.2s; }
+.art--hero .art__branch .lf1 { transform-origin: 395px 90px; --lg: 2.25s; --lfd: 4.4s; --la: 5deg; }
+.art--hero .art__branch .lf2 { transform-origin: 414px 119px; --lg: 2.15s; --lfd: 4.2s; --la: 4.6deg; }
+.art--hero .art__branch .lf3 { transform-origin: 418px 134px; --lg: 2.05s; --lfd: 4s; --la: 4.3deg; }
+.art--hero .art__branch .lf4 { transform-origin: 428px 156px; --lg: 1.95s; --lfd: 3.8s; --la: 4deg; }
+.art--hero .art__branch .lf5 { transform-origin: 432px 178px; --lg: 1.85s; --lfd: 3.6s; --la: 3.7deg; }
+.art--hero .art__branch .lf6 { transform-origin: 437px 206px; --lg: 1.75s; --lfd: 3.4s; --la: 3.4deg; }
+.art--hero .art__branch .lf7 { transform-origin: 435px 228px; --lg: 1.65s; --lfd: 3.2s; --la: 3.2deg; }
 
 .art--hero .art__hand {
   animation: hand-in 1.1s var(--ease-out) 0.55s both;
@@ -1662,7 +1662,7 @@ main:focus {
   to { --ring: 360deg; }
 }
 
-/* listek rozwija się i zatrzymuje lekko wychylony (1,8°) – dokładnie tam,
+/* listek rozwija się i zatrzymuje lekko wychylony (--la) – dokładnie tam,
    gdzie zaczyna się kołysanie, więc ruch rusza ze spoczynku, bez szarpnięcia */
 @keyframes leaf-grow {
   from {
@@ -1670,13 +1670,14 @@ main:focus {
     scale: 0.35;
   }
   to {
-    rotate: 1.8deg;
+    rotate: var(--la, 4deg);
   }
 }
 
+/* wychylenie --la: większe przy czubku gałązki, mniejsze przy nasadzie */
 @keyframes leaf-flutter {
-  0%, 100% { rotate: 1.8deg; }
-  50% { rotate: -1.8deg; }
+  0%, 100% { rotate: var(--la, 4deg); }
+  50% { rotate: calc(var(--la, 4deg) * -1); }
 }
 
 @keyframes hand-in {
