@@ -282,7 +282,6 @@ gest dobra/
 | 2.0.4 | 20.10.2026 | Listki gałązki kołyszą się delikatniej i płynniej: jedno wspólne tempo (6 s) zamiast różnego dla każdego listka, mniejsze wychylenie (±1,8° zamiast −3°/+3,5°), ruch po sinusoidzie bez szarpnięcia na starcie pętli, wszystkie w tę samą stronę z małym przesunięciem od dołu do góry – jak lekki powiew; CSS/JS `?v=1.9.3` |
 | 2.0.5 | 20.10.2026 | Listki: naturalny początek ruchu – wyrastają łagodniej (1,3 s, od 35% wielkości) i zatrzymują się lekko wychylone dokładnie w punkcie startu kołysania, więc kołysanie rusza ze spoczynku zamiast od razu w pełnym tempie; CSS/JS `?v=1.9.4` |
 | 2.0.6 | 20.10.2026 | Na prośbę klienta: listki po zakończeniu animacji kołyszą się wyraźniej (±3,2° przy nasadzie do ±5° przy czubku gałązki zamiast ±1,8°), nadal płynnie i w jednym tempie; w sekcji hero usunięte kropki na końcu nagłówka i opisu we wszystkich językach („Przyjmij dobro”, „…wobec człowieka”); CSS/JS `?v=1.9.5` |
-| 2.0.7 | 20.10.2026 | Sekcja „Otrzymałeś Gest Dobra” bez kropek na końcu nagłówka i akapitów, we wszystkich językach; CSS/JS `?v=1.9.6` |
 
 ## 7. Czas realizacji
 - Wersja 1.0: 10.10.2026, 15:21–16:08, **ok. 47 minut**, wszystkie etapy łącznie z testami i dokumentacją.
