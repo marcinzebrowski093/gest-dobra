@@ -29,6 +29,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // docelowa domena – po zmianie uruchom skrypt ponownie
 const SITE = 'https://gestdobra.pl/';
 
+// wersja obrazków Open Graph – podbij po każdej zmianie og-image*.jpg (komunikatory i przeglądarki cache'ują je długo)
+const OG_VER = '2';
+
 const LANGS = [
   { code: 'pl', dir: '', html: 'pl', hreflang: 'pl', og: 'pl_PL', ld: 'pl-PL', label: 'PL', name: 'Polski', flag: 'pl', ogImage: 'og-image.jpg' },
   { code: 'en', dir: 'en/', html: 'en-GB', hreflang: 'en', og: 'en_GB', ld: 'en-GB', label: 'GB', name: 'English', flag: 'uk', ogImage: 'og-image-en.jpg' },
@@ -88,7 +91,7 @@ function headBlock(page, lang) {
     `  <meta property="og:title" content="${escAttr(title)}">`,
     `  <meta property="og:description" content="${escAttr(t(lang, `${page.meta}.ogDescription`))}">`,
     `  <meta property="og:url" content="${pageUrl(page, lang)}">`,
-    `  <meta property="og:image" content="${SITE}assets/img/${lang.ogImage}">`,
+    `  <meta property="og:image" content="${SITE}assets/img/${lang.ogImage}?v=${OG_VER}">`,
     `  <meta property="og:image:width" content="1200">`,
     `  <meta property="og:image:height" content="630">`,
     `  <meta property="og:image:alt" content="${escAttr(t(lang, 'meta.ogImageAlt'))}">`,
@@ -123,7 +126,7 @@ function jsonldBlock(page, lang, html) {
       '@type': 'WebPage', '@id': `${pageUrl(page, lang)}#webpage`, url: pageUrl(page, lang),
       name: t(lang, `${page.meta}.title`), description: t(lang, `${page.meta}.description`), inLanguage: lang.ld,
       isPartOf: { '@id': `${SITE}#website` }, about: { '@id': `${SITE}#organization` },
-      primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}assets/img/${lang.ogImage}`, width: 1200, height: 630 },
+      primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}assets/img/${lang.ogImage}?v=${OG_VER}`, width: 1200, height: 630 },
       ...(page.id !== 'home' ? { breadcrumb: { '@id': `${pageUrl(page, lang)}#breadcrumb` } } : {}),
     },
   ];
