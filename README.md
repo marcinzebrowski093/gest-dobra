@@ -84,7 +84,7 @@ Skrypt odświeża w `index.html` sekcję `<head>` (title, opisy, canonical, href
 
 - **Nowy tekst do przetłumaczenia:** dodaj elementowi `data-i18n="klucz"` (dla atrybutów `data-i18n-attr="alt:klucz"`), a klucz i tłumaczenia do wszystkich plików JSON.
 - **Domena:** ustaw ją w stałej `SITE` na górze `tools/build-i18n.mjs`.
-- **Obrazki OG** (`assets/img/og-image-*.jpg`) są wygenerowane z tekstów hero. Przy zmianie hasła trzeba je odświeżyć.
+- **Obrazki OG** (`assets/img/og-image-*.jpg`) są wygenerowane z tekstów hero. Przy zmianie hasła trzeba je odświeżyć i podbić `OG_VER` w `tools/build-i18n.mjs` (komunikatory trzymają stary obrazek w pamięci). Edytowalne wersje SVG i skrypty generujące (puppeteer + sharp) leżą lokalnie w `_design/og-image-edytowalna/`.
 
 **Nazwa „Gest Dobra” w kroju i kolorach logo.** Generator (`brandify` w `tools/build-i18n.mjs`) owija w treści każde „Gest Dobra” (także odmiany, np. „Gestu Dobra”) w `<span class="brand-name">`: tekst w kroju Bodoni Moda opsz 18 (`bodoni-moda-litery.woff2`), małymi literami, „gest” zielone, „dobra” brązowe. Wystarczy pisać zwykły tekst i uruchomić generator. Działa też na przyciskach (po najechaniu kolor zmienia się z przyciskiem). Zwykłe linki, menu i okruszki zostają bez zmian.
 

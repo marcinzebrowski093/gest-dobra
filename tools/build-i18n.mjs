@@ -30,7 +30,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://gestdobra.pl/';
 
 // wersja obrazków Open Graph – podbij po każdej zmianie og-image*.jpg (komunikatory i przeglądarki cache'ują je długo)
-const OG_VER = '2';
+const OG_VER = '3';
 
 const LANGS = [
   { code: 'pl', dir: '', html: 'pl', hreflang: 'pl', og: 'pl_PL', ld: 'pl-PL', label: 'PL', name: 'Polski', flag: 'pl', ogImage: 'og-image.jpg' },
